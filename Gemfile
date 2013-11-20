@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'coffee-rails', '~> 4.0.0'
+gem 'font-awesome-sass'
 gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
