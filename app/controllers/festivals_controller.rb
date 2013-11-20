@@ -18,7 +18,7 @@ class FestivalsController < ApplicationController
   end
 
   def create
-    @festival = Festival.new(params[:festival])
+    @festival = Festival.new(festival_params)
     if @festival.save
       flash[:success] = "#{@festival.name} has been successfully created."
       redirect_to admin_festivals_path
@@ -34,7 +34,7 @@ class FestivalsController < ApplicationController
 
   def update
     @festival = Festival.find(params[:id])
-    @festival.assign_attributes(params[:festival])
+    @festival.assign_attributes(festival_params)
     if @festival.save
       flash[:success] = "#{@festival.name} has been successfully updated."
       redirect_to admin_festivals_path
@@ -48,5 +48,11 @@ class FestivalsController < ApplicationController
     festival = Festival.find(params[:id]).destroy
     flash[:success] = "#{festival.name} has been deleted."
     redirect_to admin_festivals_path
+  end
+
+  private
+
+  def festival_params
+    params.require(:festival).permit(:name, :festival_url, :logo, :banner, :background_colour, :slug)
   end
 end
