@@ -1,0 +1,31 @@
+= form_for @festival do |f|
+  .form-group
+    label for="festival_name"
+      b Name
+    = f.text_field :name, :value => @festival.name, :class => "form-control"
+
+  .form-group
+    label for="festival_logo"
+      b Logo
+    = f.file_field :logo, :value => @festival.logo, :class => "form-control"
+
+  .form-group
+    label for="festival_logo"
+      b Banner
+    = f.file_field :banner, :value => @festival.banner, :class => "form-control"
+
+  .form-group
+    label for="festival_festival_url"
+      b Url of the festival (e.g. http://www.viff.org/)
+    = f.text_field :festival_url, :value => @festival.festival_url, :class => "form-control"
+
+  .form-group
+    label for="festival_background_colour"
+      b Festival page's background colour (e.g. "white" or "#FFFFFF")
+    = f.text_field :background_colour, :value => @festival.background_colour, :class => "form-control"
+
+  button.btn.btn-success type="submit"
+    = "#{Festival.find_by_id(@festival.id) ? "Save" : "Create"}"
+
+    - if Festival.find_by_id(@festival.id)
+      = link_to "Delete", festival_path(@festival), :method => :delete, :confirm => "You know what you're doing right?  You're about to delete this festival..."
