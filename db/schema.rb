@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120223704) do
+ActiveRecord::Schema.define(version: 20131120230437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,12 +19,18 @@ ActiveRecord::Schema.define(version: 20131120223704) do
   create_table "festivals", force: true do |t|
     t.string   "name"
     t.string   "festival_url"
-    t.string   "logo"
-    t.string   "banner"
     t.string   "background_colour"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.string   "banner_file_name"
+    t.string   "banner_content_type"
+    t.integer  "banner_file_size"
+    t.datetime "banner_updated_at"
   end
 
 end
