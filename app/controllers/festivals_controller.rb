@@ -23,7 +23,7 @@ class FestivalsController < ApplicationController
       flash[:success] = "#{@festival.name} has been successfully created."
       redirect_to admin_festivals_path
     else
-      flash.now[:errors] = "Gawd. Fill everything in correctly man."
+      flash.now[:warning] = "Gawd. Fill everything in correctly man."
       render "new"
     end
   end
@@ -39,7 +39,7 @@ class FestivalsController < ApplicationController
       flash[:success] = "#{@festival.name} has been successfully updated."
       redirect_to admin_festivals_path
     else
-      flash.now[:errors] = "Gawd. Fill everything in correctly man."
+      flash.now[:warning] = "Gawd. Fill everything in correctly man."
       render "edit"
     end
   end
