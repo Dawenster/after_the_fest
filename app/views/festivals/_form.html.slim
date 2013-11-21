@@ -8,7 +8,7 @@
     label for="festival_logo"
       b Logo
     - if @festival.logo.present?
-      div
+      div style="margin-bottom: 20px;"
         = image_tag(@festival.logo.url(:thumb))
     = f.file_field :logo, :class => "form-control"
 
@@ -16,7 +16,7 @@
     label for="festival_banner"
       b Banner
     - if @festival.banner.present?
-      div
+      div style="margin-bottom: 20px;"
         = image_tag(@festival.banner.url(:thumb))
     = f.file_field :banner, :class => "form-control"
 

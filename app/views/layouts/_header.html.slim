@@ -1,0 +1,6 @@
+.row style="height: 150px;"
+  .col-md-3.col-sm-3
+    .hidden-xs.logo-image
+      = link_to(image_tag("atf_logo.png", :width => "100%"), root_path)
+  .col-md-9.col-sm-9 style="height: 100%"
+    .festival-banner style="background-image:url(#{@festival.banner.url})"

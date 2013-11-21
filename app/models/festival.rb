@@ -6,4 +6,14 @@ class Festival < ActiveRecord::Base
   validates :festival_url, :presence => true
   validates :logo, :presence => true
   validates :banner, :presence => true
+
+  before_create :create_slug
+
+  def create_slug
+    self.slug = self.to_slug
+  end
+
+  def to_slug
+    self.name.parameterize
+  end
 end
