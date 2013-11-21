@@ -1,0 +1,31 @@
+= simple_form_for @film, :url => url_for(:action => "#{@film.id ? 'update' : 'create'}", :controller => "films") do |f|
+  .form-group
+    label for="film_name"
+      b Name
+    = f.text_field :name, :value => @film.name, :class => "form-control"
+
+  .form-group
+    label for="film_image"
+      b Image
+    - if @film.image.present?
+      div style="margin-bottom: 20px;"
+        = image_tag(@film.image.url(:thumb))
+    = f.file_field :image, :class => "form-control"
+
+  .form-group
+    label for="film_embed_url"
+      b Video embed code
+    = f.text_area :embed_url, :class => "form-control", :rows => 10
+
+  .form-group
+    label for="device_festival_id"
+      b Festival
+    div
+      = f.select :festival_id, Festival.order("lower(name) ASC").collect {|festival| [ festival.name, festival.id ] }
+
+  button.btn.btn-success type="submit"
+    = "#{Film.find_by_id(@film.id) ? "Save" : "Create"}"
+
+  - if Film.find_by_id(@film.id)
+    div style="padding: 10px 5px;"
+      = link_to "Delete", { :id => @film.id, :action => :destroy }, :method => :delete, :confirm => "You know what you're doing right?  You're about to delete this film..."

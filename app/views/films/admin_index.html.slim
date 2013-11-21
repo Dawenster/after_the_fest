@@ -1,0 +1,39 @@
+.admin-container
+  .row
+    .col-md-2
+      = render "admins/admin_nav"
+    .col-md-10
+      #flash
+        - flash.each do |name, msg|
+          = content_tag :div, msg, :id => "flash_#{name}", class: "alert alert-#{name}"
+
+      h2
+        | All films
+        .pull-right
+          = link_to("Create", new_film_path, :class => "btn btn-primary")
+
+      table.table
+        tr
+          th
+            | Image
+          th
+            | Name
+          th
+            | Festival
+          th
+            | Up votes
+          th
+            | Down votes
+
+        - @films.each do |film|
+          tr
+            td
+              = image_tag(film.image.url(:thumb))
+            td
+              = link_to(film.name, edit_film_path(film))
+            td
+              = film.festival.name
+            td
+              = film.up_votes
+            td
+              = film.down_votes

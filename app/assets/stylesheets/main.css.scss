@@ -2,12 +2,24 @@ html,body {
   height: 100%;
 }
 
+.container {
+  margin-top: 111px;
+}
+
 .index-festival-logo {
   padding: 20px;
 }
 
-.logo-image {
-  line-height: 130px;
+#main-navbar-collapse {
+  padding-top: 30px;
+}
+
+.navbar {
+  border-radius: 0px !important;
+}
+
+.navbar-toggle {
+  margin-top: 40px !important;
 }
 
 .festival-banner {

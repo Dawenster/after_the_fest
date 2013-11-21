@@ -1,16 +1,14 @@
-nav.navbar.navbar-default role="navigation"
+nav.navbar.navbar-default.navbar-fixed-top role="navigation"
   / Brand and toggle get grouped for better mobile display
   .navbar-header
-    button.navbar-toggle data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"
+    button.navbar-toggle data-target="#main-navbar-collapse" data-toggle="collapse" type="button"
       span.sr-only Toggle navigation
       span.icon-bar
       span.icon-bar
       span.icon-bar
-    .visible-xs
-      a.navbar-brand href="#"
-        | After the Fest
+    = link_to(image_tag("atf_logo_small.png", :width => "100%", :height => "100%"), root_path, :class => "navbar-brand")
   / Collect the nav links, forms, and other content for toggling
-  #bs-example-navbar-collapse-1.collapse.navbar-collapse
+  #main-navbar-collapse.collapse.navbar-collapse
     ul.nav.navbar-nav
       li.active
         a href="#"
@@ -34,6 +32,7 @@ nav.navbar.navbar-default role="navigation"
               | Horror
     form.navbar-form.navbar-right role="search"
       .form-group
-        input.form-control placeholder="Search" type="text"
-      button.btn.btn-default type="submit"
-        i.fa.fa-search
+        input.form-control.visible-lg placeholder="Search" type="text"
+      button.btn.btn-default type="submit" style="height: 34px;"
+        i.fa.fa-search-plus.hidden-lg
+        i.fa.fa-search.visible-lg
