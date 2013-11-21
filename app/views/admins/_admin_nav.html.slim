@@ -1,4 +1,7 @@
 ul.nav.nav-pills.nav-stacked
+  li
+    a href="#{root_path}"
+      | ATF Home
   li class="#{'active' if params[:controller] == 'festivals'}"
     a href="#{admin_festivals_path}"
       | Festivals
