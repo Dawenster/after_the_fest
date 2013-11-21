@@ -7,7 +7,7 @@ class Festival < ActiveRecord::Base
   validates :logo, :presence => true
   validates :banner, :presence => true
 
-  before_create :create_slug
+  before_save :create_slug
 
   def create_slug
     self.slug = self.to_slug

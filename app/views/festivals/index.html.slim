@@ -1,3 +1,5 @@
-= render "layouts/nav"
+h1 style="text-align: center; padding: 30px;"
+  | Select a festival
 - @festivals.each do |festival|
-  = link_to(image_tag(festival.logo.url), festival_path(festival.slug))
+  .col-md-4
+    = link_to(image_tag(festival.logo.url, :width => "100%"), festival_path(festival.slug))
