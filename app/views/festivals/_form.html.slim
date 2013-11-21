@@ -1,4 +1,4 @@
-= form_for @festival do |f|
+= simple_form_for @festival, :url => url_for(:action => "#{@festival.id ? 'update' : 'create'}", :controller => "festivals") do |f|
   .form-group
     label for="festival_name"
       b Name
@@ -16,7 +16,7 @@
 
   .form-group
     label for="festival_festival_url"
-      b Url of the festival (e.g. http://www.viff.org/)
+      b Url of the festival (e.g. http://www.viff.org)
     = f.text_field :festival_url, :value => @festival.festival_url, :class => "form-control"
 
   .form-group
