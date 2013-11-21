@@ -1,39 +1,39 @@
-= render "layouts/nav"
-.row
-  .col-md-2
-    = render "admins/admin_nav"
-  .col-md-10
-    #flash
-      - flash.each do |name, msg|
-        = content_tag :div, msg, :id => "flash_#{name}", class: "alert alert-#{name}"
+.admin-container
+  .row
+    .col-md-2
+      = render "admins/admin_nav"
+    .col-md-10
+      #flash
+        - flash.each do |name, msg|
+          = content_tag :div, msg, :id => "flash_#{name}", class: "alert alert-#{name}"
 
-    h2
-      | All festivals
-      .pull-right
-        = link_to("Create", new_festival_path, :class => "btn btn-primary")
+      h2
+        | All festivals
+        .pull-right
+          = link_to("Create", new_festival_path, :class => "btn btn-primary")
 
-    table.table
-      tr
-        th
-          | Logo
-        th
-          | Name
-        th
-          | Festival url
-        th
-          | Background colour
-        th
-          | Banner
-
-      - @festivals.each do |festival|
+      table.table
         tr
-          td
-            = image_tag(festival.logo.url(:thumb))
-          td
-            = link_to(festival.name, edit_festival_path(festival))
-          td
-            = festival.festival_url
-          td
-            = festival.background_colour
-          td
-            = image_tag(festival.banner.url(:thumb))
+          th
+            | Logo
+          th
+            | Name
+          th
+            | Festival url
+          th
+            | Background colour
+          th
+            | Banner
+
+        - @festivals.each do |festival|
+          tr
+            td
+              = image_tag(festival.logo.url(:thumb))
+            td
+              = link_to(festival.name, edit_festival_path(festival))
+            td
+              = festival.festival_url
+            td
+              = festival.background_colour
+            td
+              = image_tag(festival.banner.url(:thumb))
