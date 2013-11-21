@@ -8,8 +8,31 @@
 
     h2
       | All festivals
+      .pull-right
+        = link_to("Create", new_festival_path, :class => "btn btn-primary")
 
-    - @festivals.each do |festival|
-      = festival.name
-      = image_tag(festival.logo.url)
-      = image_tag(festival.banner.url)
+    table.table
+      tr
+        th
+          | Logo
+        th
+          | Name
+        th
+          | Festival url
+        th
+          | Background colour
+        th
+          | Banner
+
+      - @festivals.each do |festival|
+        tr
+          td
+            = image_tag(festival.logo.url(:thumb))
+          td
+            = link_to(festival.name, edit_festival_path(festival))
+          td
+            = festival.festival_url
+          td
+            = festival.background_colour
+          td
+            = image_tag(festival.banner.url(:thumb))

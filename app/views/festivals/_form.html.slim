@@ -7,12 +7,18 @@
   .form-group
     label for="festival_logo"
       b Logo
-    = f.file_field :logo, :value => @festival.logo, :class => "form-control"
+    - if @festival.logo.present?
+      div
+        = image_tag(@festival.logo.url(:thumb))
+    = f.file_field :logo, :class => "form-control"
 
   .form-group
-    label for="festival_logo"
+    label for="festival_banner"
       b Banner
-    = f.file_field :banner, :value => @festival.banner, :class => "form-control"
+    - if @festival.banner.present?
+      div
+        = image_tag(@festival.banner.url(:thumb))
+    = f.file_field :banner, :class => "form-control"
 
   .form-group
     label for="festival_festival_url"
@@ -27,5 +33,6 @@
   button.btn.btn-success type="submit"
     = "#{Festival.find_by_id(@festival.id) ? "Save" : "Create"}"
 
-    - if Festival.find_by_id(@festival.id)
-      = link_to "Delete", festival_path(@festival), :method => :delete, :confirm => "You know what you're doing right?  You're about to delete this festival..."
+  - if Festival.find_by_id(@festival.id)
+    div style="padding: 10px 5px;"
+      = link_to "Delete", { :id => @festival.id, :action => :destroy }, :method => :delete, :confirm => "You know what you're doing right?  You're about to delete this festival..."
