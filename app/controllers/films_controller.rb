@@ -15,6 +15,7 @@ class FilmsController < ApplicationController
   end
 
   def create
+    params = convert_param_dates
     @film = Film.new(film_params)
     if @film.save
       flash[:success] = "#{@film.name} has been successfully created."
@@ -31,6 +32,7 @@ class FilmsController < ApplicationController
 
   def update
     @film = Film.find(params[:id])
+    params = convert_param_dates
     @film.assign_attributes(film_params)
     if @film.save
       flash[:success] = "#{@film.name} has been successfully updated."
@@ -50,6 +52,32 @@ class FilmsController < ApplicationController
   private
 
   def film_params
-    params.require(:film).permit(:name, :embed_url, :image, :up_votes, :down_votes, :slug, :festival_id)
+    params.require(:film).permit(
+      :name,
+      :embed_url,
+      :image,
+      :up_votes,
+      :down_votes,
+      :slug,
+      :festival_id, 
+      :director,
+      :writer,
+      :starring,
+      :description,
+      :run_time,
+      :screening,
+      :start,
+      :end
+    )
+  end
+
+  def convert_param_dates
+    params[:film][:start] = convert_to_date_object(params[:film][:start])
+    params[:film][:end] = convert_to_date_object(params[:film][:end])
+    return params
+  end
+
+  def convert_to_date_object(str)
+    DateTime.strptime(str, "%m/%d/%Y")
   end
 end
