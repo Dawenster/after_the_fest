@@ -42,12 +42,30 @@ html,body {
   margin-bottom: 10px;
   margin-right: 5px;
   margin-left: 5px;
+  position: relative;
 }
 
 .film-grid-item {
   height: 400px;
   background-size: cover;
   cursor: pointer;
+  opacity: 1;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+}
+
+.hovering {
+  opacity: 0.5;
+}
+
+.play-button {
+  background-image:url('/assets/play.png');
+  background-repeat: no-repeat;
+  height: 400px;
+  background-position: center;
+  position: absolute;
+  width: 100%;
 }
 
 .admin-container {
