@@ -5,7 +5,7 @@ class Film < ActiveRecord::Base
   }
 
   has_attached_file :image,
-                    :styles => { :thumb => "100x100>", :display => "300x400#" },
+                    :styles => { :thumb => "100x100>", :display => "380x400#" },
                     :s3_credentials => s3_credentials_hash,
                     :bucket => "afterthefest"
 

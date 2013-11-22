@@ -4,3 +4,15 @@ css:
   }
 
 = render "layouts/header"
+
+.row
+  - @festival.films.each do |film|
+    .col-md-3.col-sm-6.col-xs-12
+      = link_to(image_tag(film.image.url(:display), :width => "100%"), public_film_path(film.festival.slug, film.slug))
+
+javascript:
+  $(document).ready(function() {
+    if (Modernizr.touch) {
+      // Show details button
+    }
+  });

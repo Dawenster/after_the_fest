@@ -4,4 +4,30 @@ css:
   }
 
 = render "layouts/header"
-= render "layouts/nav"
+
+.row style="margin: 0 !important;"
+  .col-md-8.video-holder style="padding: 0 !important;"
+    = @film.embed_url.html_safe
+  .col-md-4 style="padding: 0 !important;"
+    .detail-bucket
+      .row
+        .col-xs-6.col-md-12
+          = image_tag(@film.image.url(:display), :width => "100%")
+        .col-xs-6.col-md-12
+          .detail-content
+            h3
+              = @film.name
+            p
+              = "Directed by: #{@film.director}"
+            p
+              = "Writer: #{@film.writer}"
+            p
+              = "Starring: #{@film.starring}"
+            p
+              = @film.description
+            p
+              = "Run time: #{@film.run_time} mins"
+            p
+              = "Screening: #{@film.screening}"
+            p
+              = "Available: #{@film.start.strftime('%b')} #{@film.start.day.ordinalize} to #{@film.end.strftime('%b')} #{@film.end.day.ordinalize}"
