@@ -36,7 +36,11 @@ class Film < ActiveRecord::Base
       <br>
       <strong>Run time:</strong> #{self.run_time} mins<br>
       <strong>Screening:</strong> #{self.screening}<br>
-      <strong>Available:</strong> #{self.start.strftime('%b')} #{self.start.day.ordinalize} to #{self.end.strftime('%b')} #{self.end.day.ordinalize}
+      <strong>Available:</strong> #{self.available_range}
     eos
+  end
+
+  def available_range
+    "#{self.start.strftime('%b')} #{self.start.day.ordinalize} to #{self.end.strftime('%b')} #{self.end.day.ordinalize}"
   end
 end

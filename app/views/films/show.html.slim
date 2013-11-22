@@ -17,16 +17,16 @@ css:
           h3
             = @film.name
           p
-            = "Directed by: #{@film.director}"
+            = "<strong>Directed by:</strong> #{@film.director}".html_safe
           p
-            = "Writer: #{@film.writer}"
+            = "<strong>Writer:</strong> #{@film.writer}".html_safe
           p
-            = "Starring: #{@film.starring}"
+            = "<strong>Starring:</strong> #{@film.starring}".html_safe
           p
-            = @film.description
+            = @film.description.html_safe
           p
-            = "Run time: #{@film.run_time} mins"
+            = "<strong>Run time:</strong> #{@film.run_time} mins".html_safe
           p
-            = "Screening: #{@film.screening}"
+            = "<strong>Screening:</strong> #{@film.screening}".html_safe
           p
-            = "Available: #{@film.start.strftime('%b')} #{@film.start.day.ordinalize} to #{@film.end.strftime('%b')} #{@film.end.day.ordinalize}"
+            = "<strong>Available:</strong> #{@film.available_range}".html_safe
