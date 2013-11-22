@@ -85,7 +85,16 @@ html,body {
 
 .popover {
   width: 310px;
-  height: 250px;
+  max-height: 100%;
+}
+
+.popover-title {
+  font-weight: bold !important;
+  font-size: 16px !important;
+}
+
+.popover-content {
+  font-size: 12px;
 }
 
 .footer {

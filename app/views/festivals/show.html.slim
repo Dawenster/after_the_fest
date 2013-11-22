@@ -15,13 +15,13 @@ css:
 
         .play-button.hidden
 
-        .film-grid-item.visible-lg style="background-image:url(#{film.image.url(:display)});" data-url="#{public_film_path(film.festival.slug, film.slug)}" title="#{film.name}" data-content="#{truncate(film.description, length: 200, omission: '... more')}" data-placement="" data-count="#{i+1}" data-screen="lg" data-animate="false"
+        .film-grid-item.visible-lg style="background-image:url(#{film.image.url(:display)});" data-url="#{public_film_path(film.festival.slug, film.slug)}" title="#{film.name}" data-content="#{film.popover_content}" data-placement="" data-count="#{i+1}" data-screen="lg" data-animate="false" data-html="true"
 
-        .film-grid-item.visible-md style="background-image:url(#{film.image.url(:display)});" data-url="#{public_film_path(film.festival.slug, film.slug)}" title="#{film.name}" data-content="#{truncate(film.description, length: 200, omission: '... more')}" data-placement="" data-count="#{i+1}" data-screen="md" data-animate="false"
+        .film-grid-item.visible-md style="background-image:url(#{film.image.url(:display)});" data-url="#{public_film_path(film.festival.slug, film.slug)}" title="#{film.name}" data-content="#{film.popover_content}" data-placement="" data-count="#{i+1}" data-screen="md" data-animate="false" data-html="true"
 
-        .film-grid-item.visible-sm style="background-image:url(#{film.image.url(:display)});" data-url="#{public_film_path(film.festival.slug, film.slug)}" title="#{film.name}" data-content="#{truncate(film.description, length: 200, omission: '... more')}" data-placement="" data-count="#{i+1}" data-screen="sm" data-animate="false"
+        .film-grid-item.visible-sm style="background-image:url(#{film.image.url(:display)});" data-url="#{public_film_path(film.festival.slug, film.slug)}" title="#{film.name}" data-content="#{film.popover_content}" data-placement="" data-count="#{i+1}" data-screen="sm" data-animate="false" data-html="true"
 
-        .film-grid-item.visible-xs style="background-image:url(#{film.image.url(:display)});" data-url="#{public_film_path(film.festival.slug, film.slug)}" title="#{film.name}" data-content="#{truncate(film.description, length: 200, omission: '... more')}" data-placement="" data-count="#{i+1}" data-screen="xs" data-animate="false"
+        .film-grid-item.visible-xs style="background-image:url(#{film.image.url(:display)});" data-url="#{public_film_path(film.festival.slug, film.slug)}" title="#{film.name}" data-content="#{film.popover_content}" data-placement="" data-count="#{i+1}" data-screen="xs" data-animate="false" data-html="true"
 
 javascript:
   $(document).ready(function() {
