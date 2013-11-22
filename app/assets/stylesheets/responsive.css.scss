@@ -4,6 +4,10 @@
   .video-holder {
     height: 300px !important;
   }
+
+  .footer {
+    line-height: none !important;
+  }
 }
 
 /* Small screens only */
@@ -11,6 +15,10 @@
 @media (min-width: 768px) and (max-width: 992px) {
   .video-holder {
     height: 440px !important;
+  }
+
+  .footer {
+    line-height: 60px;
   }
 }
 
@@ -42,5 +50,9 @@
   .detail-bucket {
     text-align: center;
     padding-left: 10px;
+  }
+
+  .footer {
+    line-height: 60px;
   }
 }
