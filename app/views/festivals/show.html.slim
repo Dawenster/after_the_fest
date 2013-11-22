@@ -7,8 +7,10 @@ css:
 
 .row
   - @festival.films.each do |film|
-    .col-md-3.col-sm-6.col-xs-12
-      = link_to(image_tag(film.image.url(:display), :width => "100%"), public_film_path(film.festival.slug, film.slug))
+    .col-lg-3.col-md-4.col-sm-6.col-xs-12 style="padding: 0;"
+      .film-grid-holder
+        .film-grid-item style="background-image:url(#{film.image.url(:display)});"
+      / = link_to(image_tag(film.image.url(:display), :width => "100%"), public_film_path(film.festival.slug, film.slug))
 
 javascript:
   $(document).ready(function() {

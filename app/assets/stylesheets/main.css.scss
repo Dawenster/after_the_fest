@@ -38,6 +38,17 @@ html,body {
   cursor: pointer;
 }
 
+.film-grid-holder {
+  margin-bottom: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.film-grid-item {
+  height: 400px;
+  background-size: cover;
+}
+
 .admin-container {
   padding: 20px;
 }
