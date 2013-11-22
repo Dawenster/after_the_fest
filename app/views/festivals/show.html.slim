@@ -6,14 +6,66 @@ css:
 = render "layouts/header"
 
 .row
-  - @festival.films.each do |film|
+  - @festival.films.each_with_index do |film, i|
     .col-lg-3.col-md-4.col-sm-6.col-xs-12 style="padding: 0;"
       .film-grid-holder
-        .film-grid-item style="background-image:url(#{film.image.url(:display)});"
-      / = link_to(image_tag(film.image.url(:display), :width => "100%"), public_film_path(film.festival.slug, film.slug))
+        .film-grid-item.visible-lg style="background-image:url(#{film.image.url(:display)});" data-url="#{public_film_path(film.festival.slug, film.slug)}" title="#{film.name}" data-content="#{truncate(film.description, length: 200, omission: '... more')}" data-placement="" data-count="#{i+1}" data-screen="lg" data-animate="false"
+
+        .film-grid-item.visible-md style="background-image:url(#{film.image.url(:display)});" data-url="#{public_film_path(film.festival.slug, film.slug)}" title="#{film.name}" data-content="#{truncate(film.description, length: 200, omission: '... more')}" data-placement="" data-count="#{i+1}" data-screen="md" data-animate="false"
+
+        .film-grid-item.visible-sm style="background-image:url(#{film.image.url(:display)});" data-url="#{public_film_path(film.festival.slug, film.slug)}" title="#{film.name}" data-content="#{truncate(film.description, length: 200, omission: '... more')}" data-placement="" data-count="#{i+1}" data-screen="sm" data-animate="false"
+
+        .film-grid-item.visible-xs style="background-image:url(#{film.image.url(:display)});" data-url="#{public_film_path(film.festival.slug, film.slug)}" title="#{film.name}" data-content="#{truncate(film.description, length: 200, omission: '... more')}" data-placement="" data-count="#{i+1}" data-screen="xs" data-animate="false"
 
 javascript:
   $(document).ready(function() {
+    var gridItems = $(".film-grid-item");
+    var positionIfLast = null;
+    var defaultPosition = null;
+
+    for (var i=0; i < gridItems.length; i++) {
+      currentItem = $(gridItems[i]);
+      switch (currentItem.attr("data-screen")) {
+        case "lg":
+          positionIfLast = 4;
+          var defaultPosition = "right";
+          break;
+        case "md":
+          positionIfLast = 3;
+          var defaultPosition = "right";
+          break;
+        case "sm":
+          positionIfLast = 2;
+          var defaultPosition = "right";
+          break;
+        case "xs":
+          positionIfLast = 1;
+          var defaultPosition = "bottom";
+          break;
+      }
+      var count = parseInt(currentItem.attr("data-count"));
+      if (count % positionIfLast == 0 && positionIfLast != 1) {
+        defaultPosition = "left";
+      }
+      currentItem.attr("data-placement", defaultPosition);
+    }
+
+    $(".film-grid-item").hover(function(e) {
+      $(this).popover("show");
+    }, function(e) {
+      var target = $(e.target);
+      var popoverCount = setInterval(function() {
+        if (!$(".popover:hover").length && !target.is(":hover")) {
+          target.popover("hide");
+          clearInterval(popoverCount);
+        }
+      }, 100);
+    });
+
+    $(".film-grid-item").click(function(e) {
+      window.location = $(this).attr("data-url");
+    });
+
     if (Modernizr.touch) {
       // Show details button
     }

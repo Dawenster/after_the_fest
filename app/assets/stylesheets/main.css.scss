@@ -47,6 +47,7 @@ html,body {
 .film-grid-item {
   height: 400px;
   background-size: cover;
+  cursor: pointer;
 }
 
 .admin-container {
@@ -55,6 +56,11 @@ html,body {
 
 .detail-content {
   text-align: left;
+}
+
+.popover {
+  width: 310px;
+  height: 250px;
 }
 
 .footer {
