@@ -7,7 +7,7 @@ css:
 
 .row style="margin: 0 !important;"
   .col-md-8.video-holder style="padding: 0 !important;"
-    = @film.embed_url.html_safe
+    = set_video_dimentions(@film.embed_url).html_safe
   .col-md-4 style="padding: 0 !important;"
     .detail-bucket
       .row

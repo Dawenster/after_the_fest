@@ -19,9 +19,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body data-no-turbolink>
-  <div class="container">
-    <%= render "layouts/nav" %>
-    <%= yield %>
+  <div id="wrap">
+    <div class="container clear-top">
+      <%= render "layouts/nav" %>
+      <%= yield %>
+    </div>
   </div>
   <%= render "layouts/footer" %>
 </body>
