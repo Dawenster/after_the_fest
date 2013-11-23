@@ -8,7 +8,9 @@ css:
 .row
   .col-md-8.video-holder style="padding: 0 !important;"
     = set_video_dimentions(@film.embed_url).html_safe
-  .col-md-4 style="padding: 0 !important;"
+    = render "voting"
+    = render "comments"
+  .col-md-4.detail-bucket-column style="padding: 0 !important;"
     .detail-bucket
       .col-xs-6.col-md-12 style="padding:0 !important;"
         = image_tag(@film.image.url(:display), :width => "100%")
