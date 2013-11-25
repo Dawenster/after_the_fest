@@ -4,6 +4,7 @@ class FilmsController < ApplicationController
   def show
     @film = Film.find_by_slug(params[:slug])
     @festival = @film.festival
+    @request_data = request.location.data
   end
 
   def admin_index

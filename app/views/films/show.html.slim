@@ -10,6 +10,9 @@ css:
     = set_video_dimentions(@film.embed_url).html_safe
     = render "voting"
     = render "comments"
+    = @request_data["ip"]
+    = @request_data["region_name"]
+    = @request_data["country_name"]
   .col-md-4.detail-bucket-column style="padding: 0 !important;"
     .detail-bucket
       .col-xs-6.col-md-12 style="padding:0 !important;"

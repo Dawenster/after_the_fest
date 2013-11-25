@@ -18,9 +18,9 @@ gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
 group :development do
-  gem 'pry'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'pry'
 end
 
 group :doc do
