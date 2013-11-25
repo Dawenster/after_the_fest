@@ -14,6 +14,8 @@ AfterTheFest::Application.routes.draw do
 
     resources :genres, :except => [:index, :show]
     get "/genres" => "genres#admin_index", :as => :admin_genres
+
+    resources :locations, :except => [:show]
   end
 
   get "/genres" => "genres#show", :as => :public_genre

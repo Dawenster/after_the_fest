@@ -10,28 +10,16 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
   / Collect the nav links, forms, and other content for toggling
   #main-navbar-collapse.collapse.navbar-collapse
     ul.nav.navbar-nav
-      - if params[:slug].present?
-        li.active
-          a href="#{public_festival_path(@festival.slug)}"
-            | SHOW ALL
       li.dropdown
         a.dropdown-toggle data-toggle="dropdown" href="#"
-          | AWARD WINNERS
+          | FESTIVALS
           b.caret
         ul.dropdown-menu
-          li
-            a href="#"
-              | Best actor
-          li
-            a href="#"
-              | Best actress
-          li
-            a href="#"
-              | Best action
-          li
-            a href="#"
-              | Best romance
-      li.dropdown class="#{'active' if params[:controller] == 'genres'}"
+          - Festival.order("lower(name) ASC").each do |festival|
+            li
+              a href="#{public_festival_path(festival.slug)}"
+                = festival.name
+      li.dropdown
         a.dropdown-toggle data-toggle="dropdown" href="#"
           | BY GENRE
           b.caret
@@ -40,6 +28,9 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
             li
               a href="#{public_genre_path(:type => genre.name)}"
                 = genre.name
+      li.dropdown
+        a.dropdown-toggle data-toggle="dropdown" href="#"
+          | AWARD WINNERS
     form.navbar-form.navbar-right role="search"
       .form-group
         input.form-control.visible-lg placeholder="Search" type="text"

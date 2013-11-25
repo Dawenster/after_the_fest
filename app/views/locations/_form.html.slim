@@ -1,0 +1,20 @@
+= simple_form_for @location, :url => url_for(:action => "#{@location.id ? 'update' : 'create'}", :controller => "locations") do |f|
+  .form-group
+    label for="location_address"
+      b Name
+    = f.text_field :address, :value => @location.address, :class => "form-control"
+
+  .form-group
+    label for="location_location_type"
+      b Location type
+    div
+      = f.select :location_type, ["City", "State or Province", "Country"]
+
+  br
+
+  button.btn.btn-success type="submit"
+    = "#{Location.find_by_id(@location.id) ? "Save" : "Create"}"
+
+  - if Location.find_by_id(@location.id)
+    div style="padding: 10px 5px;"
+      = link_to "Delete", { :id => @location.id, :action => :destroy }, :method => :delete, :confirm => "You know what you're doing right?  You're about to delete this location..."

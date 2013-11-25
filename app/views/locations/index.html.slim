@@ -1,0 +1,27 @@
+.admin-container
+  .row
+    .col-md-2
+      = render "admins/admin_nav"
+    .col-md-10
+      #flash
+        - flash.each do |name, msg|
+          = content_tag :div, msg, :id => "flash_#{name}", class: "alert alert-#{name}"
+
+      h2
+        | All locations
+        .pull-right
+          = link_to("Create", new_location_path, :class => "btn btn-primary")
+
+      table.table
+        tr
+          th
+            | Name
+          th
+            | Films
+
+        - @locations.each do |location|
+          tr
+            td
+              = link_to(location.name, edit_location_path(location))
+            td
+              = location.films.map{ |film| film.name }.join(", ")
