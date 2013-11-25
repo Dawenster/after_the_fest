@@ -11,8 +11,12 @@ AfterTheFest::Application.routes.draw do
 
     resources :films, :except => [:index, :show]
     get "/films" => "films#admin_index", :as => :admin_films
+
+    resources :genres, :except => [:index, :show]
+    get "/genres" => "genres#admin_index", :as => :admin_genres
   end
 
+  get "/genres" => "genres#show", :as => :public_genre
   get "/:festival/:slug" => "films#show", :as => :public_film
   get "/:slug" => "festivals#show", :as => :public_festival
 end

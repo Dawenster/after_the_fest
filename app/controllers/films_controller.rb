@@ -67,7 +67,8 @@ class FilmsController < ApplicationController
       :run_time,
       :screening,
       :start,
-      :end
+      :end,
+      :genre_ids => []
     )
   end
 

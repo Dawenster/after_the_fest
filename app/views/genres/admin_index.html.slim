@@ -1,0 +1,27 @@
+.admin-container
+  .row
+    .col-md-2
+      = render "admins/admin_nav"
+    .col-md-10
+      #flash
+        - flash.each do |name, msg|
+          = content_tag :div, msg, :id => "flash_#{name}", class: "alert alert-#{name}"
+
+      h2
+        | All genres
+        .pull-right
+          = link_to("Create", new_genre_path, :class => "btn btn-primary")
+
+      table.table
+        tr
+          th
+            | Name
+          th
+            | Films
+
+        - @genres.each do |genre|
+          tr
+            td
+              = link_to(genre.name, edit_genre_path(genre))
+            td
+              = genre.films.map{ |film| film.name }.join(", ")

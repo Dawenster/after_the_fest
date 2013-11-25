@@ -1,0 +1,14 @@
+= simple_form_for @genre, :url => url_for(:action => "#{@genre.id ? 'update' : 'create'}", :controller => "genres") do |f|
+  .form-group
+    label for="genre_name"
+      b Name
+    = f.text_field :name, :value => @genre.name, :class => "form-control"
+
+  br
+
+  button.btn.btn-success type="submit"
+    = "#{Genre.find_by_id(@genre.id) ? "Save" : "Create"}"
+
+  - if Genre.find_by_id(@genre.id)
+    div style="padding: 10px 5px;"
+      = link_to "Delete", { :id => @genre.id, :action => :destroy }, :method => :delete, :confirm => "You know what you're doing right?  You're about to delete this genre..."

@@ -1,11 +1,8 @@
-css:
-  body {
-    background-color: #{@festival.background_colour} !important;
-  }
+h3
+  = "Genre: #{params[:type]}"
 
-= render "layouts/header"
 .row
-  - @festival.films.each_with_index do |film, i|
+  - @films.each_with_index do |film, i|
     .col-lg-3.col-md-4.col-sm-6.col-xs-12 style="padding: 0;"
       .film-grid-holder
         i.fa.fa-info-circle.fa-3x.touch-info.visible-lg.hidden data-screen="lg"
