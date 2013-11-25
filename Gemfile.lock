@@ -55,6 +55,7 @@ GEM
     execjs (2.0.2)
     font-awesome-sass (4.0.1)
       sass-rails (>= 3.1.1)
+    geocoder (1.1.8)
     hike (1.2.3)
     httparty (0.12.0)
       json (~> 1.8)
@@ -160,6 +161,7 @@ DEPENDENCIES
   binding_of_caller
   coffee-rails (~> 4.0.0)
   font-awesome-sass
+  geocoder
   jbuilder (~> 1.2)
   jquery-rails
   jquery-turbolinks
