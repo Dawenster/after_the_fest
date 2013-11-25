@@ -68,7 +68,8 @@ class FilmsController < ApplicationController
       :screening,
       :start,
       :end,
-      :genre_ids => []
+      :genre_ids => [],
+      :location_ids => []
     )
   end
 
