@@ -17,6 +17,7 @@ class Film < ActiveRecord::Base
   before_save :create_slug
 
   belongs_to :festival
+  has_and_belongs_to_many :genres
 
   def create_slug
     self.slug = self.to_slug
