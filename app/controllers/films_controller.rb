@@ -86,7 +86,7 @@ class FilmsController < ApplicationController
 
   def geoblock?(film)
     request_data = request.location.data
-    return false if film == nil # No geoblocking set - anyone can watch
+    return false if film.locations.empty? # No geoblocking set - anyone can watch
     return false if request_data["ip"] == "127.0.0.1" # Local development environment
     film.locations.each do |location|
       case location.location_type
