@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/galetahub/simple-captcha.git
+  revision: 3557b78feb5fa2624efce065ff77dd4775a8256f
+  specs:
+    simple_captcha (0.1.5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -172,6 +178,7 @@ DEPENDENCIES
   sass
   sass-rails (~> 4.0.0)
   sdoc
+  simple_captcha!
   simple_form
   slim
   turbolinks
