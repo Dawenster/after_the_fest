@@ -5,6 +5,11 @@
     = f.text_field :name, :value => @festival.name, :class => "form-control"
 
   .form-group
+    label for="festival_slug"
+      b Url name
+    = f.text_field :slug, :value => @festival.slug, :class => "form-control"
+
+  .form-group
     label for="festival_logo"
       b Logo
     - if @festival.logo.present?

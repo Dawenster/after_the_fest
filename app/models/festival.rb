@@ -15,19 +15,10 @@ class Festival < ActiveRecord::Base
                     :bucket => "afterthefest"
 
   validates :name, :presence => true
+  validates :slug, :presence => true
   validates :festival_url, :presence => true
   validates :logo, :presence => true
   validates :banner, :presence => true
 
-  before_save :create_slug
-
   has_many :films
-
-  def create_slug
-    self.slug = self.to_slug
-  end
-
-  def to_slug
-    self.name.parameterize
-  end
 end
