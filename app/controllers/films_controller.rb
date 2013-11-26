@@ -4,7 +4,7 @@ class FilmsController < ApplicationController
   def show
     @film = Film.find_by_slug(params[:slug])
     @festival = @film.festival
-    @request_data = request.location.data
+    @geoblock = geoblock?(@film)
   end
 
   def admin_index
@@ -82,5 +82,21 @@ class FilmsController < ApplicationController
 
   def convert_to_date_object(str)
     DateTime.strptime(str, "%m/%d/%Y")
+  end
+
+  def geoblock?(film)
+    request_data = request.location.data
+    return false if request_data["ip"] = "127.0.0.1" # Local development environment
+    film.locations.each do |location|
+      case location.location_type
+      when "City"
+        return false if location.city == request_data["city"]
+      when "State or Province"
+        return false if location.state_or_province == request_data["region_name"]
+      when "Country"
+        return false if location.country == request_data["country_name"]
+      end
+    end
+    return true
   end
 end

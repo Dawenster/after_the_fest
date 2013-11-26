@@ -7,12 +7,12 @@ css:
 
 .row
   .col-md-8.video-holder style="padding: 0 !important;"
-    = set_video_dimentions(@film.embed_url).html_safe
-    = render "voting"
-    = render "comments"
-    = @request_data["ip"]
-    = @request_data["region_name"]
-    = @request_data["country_name"]
+    - if @geoblock
+      | Sorry, this film is not available in your area
+    - else
+      = set_video_dimentions(@film.embed_url).html_safe
+      = render "voting"
+      = render "comments"
   .col-md-4.detail-bucket-column style="padding: 0 !important;"
     .detail-bucket
       .col-xs-6.col-md-12 style="padding:0 !important;"
