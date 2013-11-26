@@ -2,6 +2,7 @@ AfterTheFest::Application.routes.draw do
   root "festivals#index"
 
   resources :festivals, :only => [:index]
+  resources :comments, :only => [:create, :destroy]
 
   scope "/admin" do
     get "/" => "admins#index", :as => :admins

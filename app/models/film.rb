@@ -18,6 +18,7 @@ class Film < ActiveRecord::Base
 
   belongs_to :festival
   has_many :votes
+  has_many :comments
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :awards
   has_and_belongs_to_many :locations
