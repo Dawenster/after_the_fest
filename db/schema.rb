@@ -108,6 +108,15 @@ ActiveRecord::Schema.define(version: 20131126215129) do
     t.string   "country"
   end
 
+  create_table "simple_captcha_data", force: true do |t|
+    t.string   "key",        limit: 40
+    t.string   "value",      limit: 6
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "simple_captcha_data", ["key"], name: "idx_key", using: :btree
+
   create_table "votes", force: true do |t|
     t.string   "ip_address"
     t.integer  "film_id"
