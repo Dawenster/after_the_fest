@@ -18,6 +18,8 @@ AfterTheFest::Application.routes.draw do
     resources :locations, :except => [:show]
   end
 
+  resources :votes, :only => [:create]
+
   get "/genres" => "genres#show", :as => :public_genre
   get "/:festival/:slug" => "films#show", :as => :public_film
   get "/:slug" => "festivals#show", :as => :public_festival

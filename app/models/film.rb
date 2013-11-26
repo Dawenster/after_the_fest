@@ -17,6 +17,7 @@ class Film < ActiveRecord::Base
   before_save :create_slug
 
   belongs_to :festival
+  has_many :votes
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :locations
 
@@ -44,5 +45,15 @@ class Film < ActiveRecord::Base
 
   def available_range
     "#{self.start.strftime('%b')} #{self.start.day.ordinalize} to #{self.end.strftime('%b')} #{self.end.day.ordinalize}"
+  end
+
+  def increment_vote(vote_type)
+    if vote_type == "up"
+      self.update_attributes(:up_votes => self.up_votes += 1)
+      return self.up_votes
+    else
+      self.update_attributes(:down_votes => self.down_votes += 1)
+      return self.down_votes
+    end
   end
 end

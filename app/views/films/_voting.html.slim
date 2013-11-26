@@ -1,13 +1,37 @@
 .voting-bucket
-  .pull-left
-    span
-      i.fa.fa-thumbs-o-up.fa-2x.vote-button
-    span style="margin: 0 20px; font-size: 18px;"
-      | Like
-    span
-      i.fa.fa-thumbs-o-down.fa-2x.vote-button
+  .pull-left.voting-section style="font-weight: bold;"
+    - if @film.votes.map{ |vote| vote.ip_address }.include?(request.location.data["ip"])
+      | Thank you for voting
+    - else
+      span
+        i.fa.fa-thumbs-o-up.fa-2x.vote-button data-vote-type="up"
+      span style="margin: 0 20px; font-size: 18px;"
+        | Like
+      span
+        i.fa.fa-thumbs-o-down.fa-2x.vote-button data-vote-type="down"
   .pull-right style="margin-top: 5px;"
     i.fa.fa-thumbs-up.fa-lg style="margin-right: 10px;"
-      = "  #{number_with_delimiter(@film.up_votes + rand(1000..100000), :delimiter => ",")}"
+      = "  #{number_with_delimiter(@film.up_votes, :delimiter => ",")}"
     i.fa.fa-thumbs-down.fa-lg
-      = "  #{number_with_delimiter(@film.down_votes + rand(1000..100000), :delimiter => ",")}"
+      = "  #{number_with_delimiter(@film.down_votes, :delimiter => ",")}"
+
+javascript:
+  $(document).ready(function() {
+    $(".vote-button").click(function(e) {
+      $.ajax({
+        url: '/votes',
+        method: 'post',
+        dataType: 'json',
+        data: { film_id: "#{@film.id}", vote_type: $(this).attr("data-vote-type") }
+      })
+      .done(function(data) {
+        var count = "  " + data.count;
+        if (data.vote_type == "up") {
+          $(".fa-thumbs-up").text(count);
+        } else {
+          $(".fa-thumbs-down").text(count);
+        }
+        $(".voting-section").text("Thank you for voting");
+      })
+    });
+  });
