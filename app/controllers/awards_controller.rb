@@ -2,7 +2,7 @@ class AwardsController < ApplicationController
   http_basic_authenticate_with :name => ENV['ADMIN_NAME'], :password => ENV['ADMIN_PASSWORD'], :except => [:index]
 
   def index
-    @awards = Award.all
+    @awards = Award.order("lower(name) ASC")
   end
 
   def admin_index

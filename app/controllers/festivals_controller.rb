@@ -2,7 +2,7 @@ class FestivalsController < ApplicationController
   http_basic_authenticate_with :name => ENV['ADMIN_NAME'], :password => ENV['ADMIN_PASSWORD'], :except => [:index, :show]
 
   def index
-    @festivals = Festival.all
+    @festivals = Festival.order("lower(name) ASC")
   end
 
   def show

@@ -8,7 +8,7 @@ class FilmsController < ApplicationController
   end
 
   def admin_index
-    @films = Film.all
+    @films = Film.order("lower(name) ASC")
   end
 
   def new
