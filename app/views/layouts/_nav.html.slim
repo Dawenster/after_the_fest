@@ -28,8 +28,8 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
             li
               a href="#{public_genre_path(:type => genre.name)}"
                 = genre.name
-      li.dropdown
-        a.dropdown-toggle data-toggle="dropdown" href="#"
+      li
+        a href="#{public_awards_path}"
           | AWARD WINNERS
     form.navbar-form.navbar-right role="search"
       .form-group

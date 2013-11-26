@@ -6,19 +6,4 @@ css:
 = render "layouts/header"
 .row
   - @festival.films.each_with_index do |film, i|
-    .col-lg-3.col-md-4.col-sm-6.col-xs-12 style="padding: 0;"
-      .film-grid-holder
-        i.fa.fa-info-circle.fa-3x.touch-info.visible-lg.hidden data-screen="lg"
-        i.fa.fa-info-circle.fa-3x.touch-info.visible-md.hidden data-screen="md"
-        i.fa.fa-info-circle.fa-3x.touch-info.visible-sm.hidden data-screen="sm"
-        i.fa.fa-info-circle.fa-3x.touch-info.visible-xs.hidden data-screen="xs"
-
-        .play-button.hidden
-
-        .film-grid-item.visible-lg style="background-image:url(#{film.image.url(:display)});" data-url="#{public_film_path(film.festival.slug, film.slug)}" title="#{film.name}" data-content="#{film.popover_content}" data-placement="" data-count="#{i+1}" data-screen="lg" data-animate="false" data-html="true"
-
-        .film-grid-item.visible-md style="background-image:url(#{film.image.url(:display)});" data-url="#{public_film_path(film.festival.slug, film.slug)}" title="#{film.name}" data-content="#{film.popover_content}" data-placement="" data-count="#{i+1}" data-screen="md" data-animate="false" data-html="true"
-
-        .film-grid-item.visible-sm style="background-image:url(#{film.image.url(:display)});" data-url="#{public_film_path(film.festival.slug, film.slug)}" title="#{film.name}" data-content="#{film.popover_content}" data-placement="" data-count="#{i+1}" data-screen="sm" data-animate="false" data-html="true"
-
-        .film-grid-item.visible-xs style="background-image:url(#{film.image.url(:display)});" data-url="#{public_film_path(film.festival.slug, film.slug)}" title="#{film.name}" data-content="#{film.popover_content}" data-placement="" data-count="#{i+1}" data-screen="xs" data-animate="false" data-html="true"
+    = render "layouts/film_grid", :film => film, :i => i

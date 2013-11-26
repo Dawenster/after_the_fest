@@ -18,7 +18,7 @@
     = f.text_area :embed_url, :value => @film.embed_url, :class => "form-control", :rows => 10
 
   .form-group
-    label for="device_festival_id"
+    label for="film_festival_id"
       b Festival
     div
       = f.select :festival_id, Festival.order("lower(name) ASC").collect {|festival| [ festival.name, festival.id ] }

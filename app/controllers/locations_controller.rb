@@ -47,7 +47,7 @@ class LocationsController < ApplicationController
   private
 
   def location_params
-    params.require(:location).permit(:address, :name, :location_type, :latitude, :longitude, :city, :state_or_province, :country)
+    params.require(:location).permit(:address, :name, :location_type, :latitude, :longitude, :city, :state_or_province, :country, :film_ids => [])
   end
 
   def set_name_as_input_address

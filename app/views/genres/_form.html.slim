@@ -4,6 +4,9 @@
       b Name
     = f.text_field :name, :value => @genre.name, :class => "form-control"
 
+  .form-group
+    = f.association :films, :as => :check_boxes, :label => "Film(s)"
+
   br
 
   button.btn.btn-success type="submit"

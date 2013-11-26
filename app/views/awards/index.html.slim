@@ -1,0 +1,9 @@
+- @awards.each do |award|
+  .row
+    .awards-title style="margin: 20px 0px;"
+      = image_tag(award.image.url(:thumb), :width => 44)
+      span style="font-size: 24px; font-weight: bold; margin-left: 15px;"
+        = award.name
+    .awards-bucket
+      - award.films.each_with_index do |film, i|
+        = render "layouts/film_grid", :film => film, :i => i

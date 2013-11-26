@@ -1,0 +1,25 @@
+= simple_form_for @award, :url => url_for(:action => "#{@award.id ? 'update' : 'create'}", :controller => "awards") do |f|
+  .form-group
+    label for="award_name"
+      b Name
+    = f.text_field :name, :value => @award.name, :class => "form-control"
+
+  .form-group
+    label for="award_image"
+      b Image
+    - if @award.image.present?
+      div style="margin-bottom: 20px;"
+        = image_tag(@award.image.url(:thumb))
+    = f.file_field :image, :class => "form-control"
+
+  .form-group
+    = f.association :films, :as => :check_boxes, :label => "Film(s)"
+
+  br
+
+  button.btn.btn-success type="submit"
+    = "#{Award.find_by_id(@award.id) ? "Save" : "Create"}"
+
+  - if Award.find_by_id(@award.id)
+    div style="padding: 10px 5px;"
+      = link_to "Delete", { :id => @award.id, :action => :destroy }, :method => :delete, :confirm => "You know what you're doing right?  You're about to delete this award..."

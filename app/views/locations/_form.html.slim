@@ -10,6 +10,9 @@
     div
       = f.select :location_type, ["City", "State or Province", "Country"]
 
+  .form-group
+    = f.association :films, :as => :check_boxes, :label => "Film(s)"
+
   br
 
   button.btn.btn-success type="submit"

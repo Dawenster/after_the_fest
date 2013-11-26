@@ -70,6 +70,7 @@ class FilmsController < ApplicationController
       :start,
       :end,
       :genre_ids => [],
+      :awards_ids => [],
       :location_ids => []
     )
   end

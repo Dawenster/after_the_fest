@@ -1,0 +1,31 @@
+.admin-container
+  .row
+    .col-md-2
+      = render "admins/admin_nav"
+    .col-md-10
+      #flash
+        - flash.each do |name, msg|
+          = content_tag :div, msg, :id => "flash_#{name}", class: "alert alert-#{name}"
+
+      h2
+        | All awards
+        .pull-right
+          = link_to("Create", new_award_path, :class => "btn btn-primary")
+
+      table.table
+        tr
+          th
+            | Image
+          th
+            | Name
+          th
+            | Films
+
+        - @awards.each do |award|
+          tr
+            td
+              = image_tag(award.image.url(:thumb)) if award.image.present?
+            td
+              = link_to(award.name, edit_award_path(award))
+            td
+              = award.films.map{ |film| film.name }.join(", ")
