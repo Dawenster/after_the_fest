@@ -4,6 +4,6 @@ css:
   }
 
 = render "layouts/header"
-.row
+.row.film-grid-row
   - @festival.films.each_with_index do |film, i|
     = render "layouts/film_grid", :film => film, :i => i

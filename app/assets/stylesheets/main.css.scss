@@ -39,14 +39,13 @@ html,body {
 }
 
 .film-grid-holder {
-  margin-bottom: 10px;
-  margin-right: 5px;
-  margin-left: 5px;
+  margin-right: 20px;
+  margin-left: 20px;
   position: relative;
 }
 
 .film-grid-item {
-  height: 400px;
+  height: 100%;
   background-size: cover;
   cursor: pointer;
   opacity: 1;
@@ -62,7 +61,7 @@ html,body {
 .play-button {
   background-image:url('/assets/play.png');
   background-repeat: no-repeat;
-  height: 400px;
+  height: 100%;
   background-position: center;
   position: absolute;
   width: 100%;

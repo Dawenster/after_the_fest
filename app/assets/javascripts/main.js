@@ -19,7 +19,7 @@ $(document).ready(function() {
         var defaultPosition = "right";
         break;
       case "sm":
-        positionIfLast = 2;
+        positionIfLast = 3;
         var defaultPosition = "right";
         break;
       case "xs":
@@ -30,24 +30,26 @@ $(document).ready(function() {
     var count = parseInt(currentItem.attr("data-count"));
     if (count % positionIfLast == 0 && positionIfLast != 1) {
       defaultPosition = "left";
+    } else if (positionIfLast == 1 && (gridItems.length / 4 == count || gridItems.length / 4 - 1 == count)) {
+      defaultPosition = "top";
     }
     currentItem.attr("data-placement", defaultPosition);
   }
 
-  $(".film-grid-item").hover(function(e) {
-    $(this).popover("show");
-    $(this).addClass("hovering");
-    $(this).siblings(".play-button").removeClass("hidden");
+  $(".film-grid-item img").hover(function(e) {
+    var parent = $(this).parent();
+    parent.popover("show");
+    parent.addClass("hovering");
+    parent.siblings(".play-button").removeClass("hidden");
   }, function(e) {
     var target = $(e.target);
+    var parent = target.parent();
     var popoverCount = setInterval(function() {
-      if (!$(".popover:hover").length && !target.is(":hover")) {
+      if (!$(".popover:hover").length && !parent.is(":hover")) {
         clearInterval(popoverCount);
-        target.popover("hide");
-        target.removeClass("hovering");
-        target.siblings(".play-button").addClass("hidden");
-      } else {
-        target.addClass("hovering");
+        parent.popover("hide");
+        parent.removeClass("hovering");
+        parent.siblings(".play-button").addClass("hidden");
       }
     }, 100);
   });
