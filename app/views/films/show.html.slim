@@ -6,11 +6,11 @@ css:
 = render "layouts/header"
 
 .row style="min-height: 100%;"
-  .col-md-8
+  .col-md-8 style="padding: 0 !important;"
     - if @geoblock
       | Sorry, this film is not available in your area
     - else
-      .video-holder style="padding: 0 !important;"
+      .video-holder
         = set_video_dimentions(@film.embed_url).html_safe
       = render "voting"
       = render "comments"
