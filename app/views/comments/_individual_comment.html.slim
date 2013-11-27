@@ -1,8 +1,10 @@
 .col-md-8
-  .comment-name
+  .comment-name style="clear: both; display: block;"
     .pull-left style="font-weight: bold;"
       = comment.author
     .pull-right style="font-style: italic; font-size: 12px;"
       = "#{time_ago_in_words(comment.created_at)} ago"
-  .comment-content
+  .comment-content style="clear: both;"
     = comment.content
+
+div style="clear: both; height: 10px;"
