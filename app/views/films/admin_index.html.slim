@@ -24,6 +24,8 @@
             | Up votes
           th
             | Down votes
+          th
+            | Availability
 
         - @films.each do |film|
           tr
@@ -37,3 +39,5 @@
               = film.up_votes
             td
               = film.down_votes
+            td
+              = film.available? ? "Available" : "Not available"

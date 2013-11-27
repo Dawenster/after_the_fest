@@ -5,6 +5,7 @@ class FilmsController < ApplicationController
     @film = Film.find_by_slug(params[:slug])
     @festival = @film.festival
     @geoblock = geoblock?(@film)
+    @availability_block = !@film.available?
   end
 
   def admin_index

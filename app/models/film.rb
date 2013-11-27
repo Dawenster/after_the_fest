@@ -78,4 +78,8 @@ class Film < ActiveRecord::Base
       return self.down_votes
     end
   end
+
+  def available?
+    Time.now >= self.start && Time.now <= self.end
+  end
 end
