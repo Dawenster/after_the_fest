@@ -1,5 +1,5 @@
 class Genre < ActiveRecord::Base
-  attr_accessible :name, :film_ids => []
+  attr_accessible :name, :film_ids
 
   validates :name, :presence => true
   

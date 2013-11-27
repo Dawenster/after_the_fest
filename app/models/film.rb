@@ -7,18 +7,18 @@ class Film < ActiveRecord::Base
                   :up_votes,
                   :down_votes,
                   :slug,
-                  :festival_id, 
+                  :festival_id,
                   :director,
                   :writer,
                   :starring,
                   :description,
                   :run_time,
-                  :screening,
+                  :screening, 
                   :start,
                   :end,
-                  :genre_ids => [],
-                  :awards_ids => [],
-                  :location_ids => []
+                  :genre_ids,
+                  :awards_ids,
+                  :location_ids
 
   s3_credentials_hash = {
     :access_key_id => ENV['AWS_ACCESS_KEY'],

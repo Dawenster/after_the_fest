@@ -1,5 +1,5 @@
 class Award < ActiveRecord::Base
-  attr_accessible :name, :image, :film_ids => []
+  attr_accessible :name, :image, :film_ids
 
   s3_credentials_hash = {
     :access_key_id => ENV['AWS_ACCESS_KEY'],
