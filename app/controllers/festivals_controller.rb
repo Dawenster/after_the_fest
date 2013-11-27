@@ -18,7 +18,7 @@ class FestivalsController < ApplicationController
   end
 
   def create
-    @festival = Festival.new(festival_params)
+    @festival = Festival.new(params)
     if @festival.save
       flash[:success] = "#{@festival.name} has been successfully created."
       redirect_to admin_festivals_path
@@ -34,7 +34,7 @@ class FestivalsController < ApplicationController
 
   def update
     @festival = Festival.find(params[:id])
-    @festival.assign_attributes(festival_params)
+    @festival.assign_attributes(params)
     if @festival.save
       flash[:success] = "#{@festival.name} has been successfully updated."
       redirect_to admin_festivals_path

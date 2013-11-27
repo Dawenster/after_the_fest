@@ -11,7 +11,7 @@ class LocationsController < ApplicationController
 
   def create
     set_name_as_input_address
-    @location = Location.new(location_params)
+    @location = Location.new(params)
     if @location.save
       flash[:success] = "#{@location.name} has been successfully created."
       redirect_to locations_path
@@ -28,7 +28,7 @@ class LocationsController < ApplicationController
   def update
     set_name_as_input_addressy
     @location = Location.find(params[:id])
-    @location.assign_attributes(location_params)
+    @location.assign_attributes(params)
     if @location.save
       flash[:success] = "#{@location.name} has been successfully updated."
       redirect_to locations_path

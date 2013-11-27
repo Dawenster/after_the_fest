@@ -17,7 +17,7 @@ class FilmsController < ApplicationController
 
   def create
     params = convert_param_dates
-    @film = Film.new(film_params)
+    @film = Film.new(params)
     if @film.save
       flash[:success] = "#{@film.name} has been successfully created."
       redirect_to admin_films_path
@@ -34,7 +34,7 @@ class FilmsController < ApplicationController
   def update
     @film = Film.find(params[:id])
     params = convert_param_dates
-    @film.assign_attributes(film_params)
+    @film.assign_attributes(params)
     if @film.save
       flash[:success] = "#{@film.name} has been successfully updated."
       redirect_to admin_films_path

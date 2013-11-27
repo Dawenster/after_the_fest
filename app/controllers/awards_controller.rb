@@ -14,7 +14,7 @@ class AwardsController < ApplicationController
   end
 
   def create
-    @award = Award.new(award_params)
+    @award = Award.new(params)
     if @award.save
       flash[:success] = "#{@award.name} has been successfully created."
       redirect_to admin_awards_path
@@ -30,7 +30,7 @@ class AwardsController < ApplicationController
 
   def update
     @award = Award.find(params[:id])
-    @award.assign_attributes(award_params)
+    @award.assign_attributes(params)
     if @award.save
       flash[:success] = "#{@award.name} has been successfully updated."
       redirect_to admin_awards_path

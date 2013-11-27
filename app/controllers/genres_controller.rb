@@ -15,7 +15,7 @@ class GenresController < ApplicationController
   end
 
   def create
-    @genre = Genre.new(genre_params)
+    @genre = Genre.new(params)
     if @genre.save
       flash[:success] = "#{@genre.name} has been successfully created."
       redirect_to admin_genres_path
@@ -31,7 +31,7 @@ class GenresController < ApplicationController
 
   def update
     @genre = Genre.find(params[:id])
-    @genre.assign_attributes(genre_params)
+    @genre.assign_attributes(params)
     if @genre.save
       flash[:success] = "#{@genre.name} has been successfully updated."
       redirect_to admin_genres_path
