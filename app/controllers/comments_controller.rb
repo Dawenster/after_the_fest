@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   protect_from_forgery except: :create
+  http_basic_authenticate_with :name => ENV['ADMIN_NAME'], :password => ENV['ADMIN_PASSWORD'], :except => [:create]
 
   def create
     respond_to do |format|
