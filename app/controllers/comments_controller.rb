@@ -18,4 +18,18 @@ class CommentsController < ApplicationController
       end
     end
   end
+
+  def index
+    @films = Film.order("lower(name) ASC")
+  end
+
+  def film_comments
+    @film = Film.find(params[:film_id])
+  end
+
+  def destroy
+    comment = Comment.find(params[:id]).destroy
+    flash[:success] = "\"#{comment.content}\" by \"#{comment.author}\" has been deleted."
+    redirect_to comments_path
+  end
 end

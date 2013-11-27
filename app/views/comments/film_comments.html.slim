@@ -1,0 +1,28 @@
+.admin-container
+  .row
+    .col-md-2
+      = render "admins/admin_nav"
+    .col-md-10
+      #flash
+        - flash.each do |name, msg|
+          = content_tag :div, msg, :id => "flash_#{name}", class: "alert alert-#{name}"
+
+      h2
+        = "Comments on #{@film.name}"
+
+      table.table
+        tr
+          th
+            | Author
+          th
+            | Comment
+          th
+
+        - @film.comments.each do |comment|
+          tr
+            td
+              = comment.author
+            td
+              = comment.content
+            td
+              = link_to "Delete", { :id => comment.id, :action => :destroy }, :method => :delete, :confirm => "You know what you're doing right?  You're about to delete this comment..."

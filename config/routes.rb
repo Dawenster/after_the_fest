@@ -2,7 +2,6 @@ AfterTheFest::Application.routes.draw do
   root "festivals#index"
 
   resources :festivals, :only => [:index]
-  resources :comments, :only => [:create, :destroy]
 
   scope "/admin" do
     get "/" => "admins#index", :as => :admins
@@ -20,9 +19,13 @@ AfterTheFest::Application.routes.draw do
     get "/awards" => "awards#admin_index", :as => :admin_awards
 
     resources :locations, :except => [:show]
+
+    resources :comments, :only => [:index, :destroy]
+    get "/comments/:film_id" => "comments#film_comments", :as => :film_comments
   end
 
   resources :votes, :only => [:create]
+  resources :comments, :only => [:create]
 
   get "/genres" => "genres#show", :as => :public_genre
   get "/awards" => "awards#index", :as => :public_awards
