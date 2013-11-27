@@ -10,7 +10,7 @@ css:
     - if @geoblock
       | Sorry, this film is not available in your area
     - elsif @availability_block
-      | Sorry, this film is no longer available on After the Fest
+      = "Sorry, this film #{Time.now > @film.start ? 'was' : 'is'} only available from #{@film.available_range}"
     - else
       .video-holder
         = set_video_dimentions(@film.embed_url).html_safe
