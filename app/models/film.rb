@@ -58,6 +58,7 @@ class Film < ActiveRecord::Base
       <br>
       #{truncate(self.description, length: 100, omission: "... ")} #{"<a href=/#{self.festival.slug}/#{self.slug}>more</a>" if self.description.length > 100}<br>
       <br>
+      #{'<strong>Awards: </strong>' + self.awards.map{|award| award.name}.join(', ') + '<br>' if self.awards.any?}
       <strong>Run time:</strong> #{self.run_time} mins<br>
       <strong>Screening:</strong> #{self.screening}<br>
       <strong>Available:</strong> #{self.available_range}
