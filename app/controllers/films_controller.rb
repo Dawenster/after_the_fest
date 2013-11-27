@@ -52,29 +52,6 @@ class FilmsController < ApplicationController
 
   private
 
-  def film_params
-    params.require(:film).permit(
-      :name,
-      :embed_url,
-      :image,
-      :up_votes,
-      :down_votes,
-      :slug,
-      :festival_id, 
-      :director,
-      :writer,
-      :starring,
-      :description,
-      :run_time,
-      :screening,
-      :start,
-      :end,
-      :genre_ids => [],
-      :awards_ids => [],
-      :location_ids => []
-    )
-  end
-
   def convert_param_dates
     params[:film][:start] = convert_to_date_object(params[:film][:start])
     params[:film][:end] = convert_to_date_object(params[:film][:end])

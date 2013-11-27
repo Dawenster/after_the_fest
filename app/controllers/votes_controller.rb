@@ -7,18 +7,18 @@ class VotesController < ApplicationController
       vote.ip_address = request.location.data["ip"]
       film = Film.find(params[:film_id])
       vote.film_id = film.id
-      if vote.save
+      if unique_ip?(vote) && vote.save
         count = film.increment_vote(params[:vote_type])
         format.json { render :json => { :message => "Success!", :count => count, :vote_type => params[:vote_type] }, :status => :ok }
       else
-        format.json { render :json => { :message => "Error." }, :status => :unprocessable_entity }
+        format.json { render :json => { :message => vote.errors.messages }, :status => :unprocessable_entity }
       end
     end
   end
 
   private
 
-  def vote_params
-    params.require(:vote).permit(:ip_address, :film_id)
+  def unique_ip?(vote)
+    !vote.film.votes.map{ |v| v.ip_address }.include?(vote.ip_address)
   end
 end

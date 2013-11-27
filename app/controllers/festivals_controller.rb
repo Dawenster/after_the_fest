@@ -49,10 +49,4 @@ class FestivalsController < ApplicationController
     flash[:success] = "#{festival.name} has been deleted."
     redirect_to admin_festivals_path
   end
-
-  private
-
-  def festival_params
-    params.require(:festival).permit(:name, :festival_url, :logo, :banner, :background_colour, :slug)
-  end
 end

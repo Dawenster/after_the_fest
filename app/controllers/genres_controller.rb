@@ -46,10 +46,4 @@ class GenresController < ApplicationController
     flash[:success] = "#{genre.name} has been deleted."
     redirect_to admin_genres_path
   end
-
-  private
-
-  def genre_params
-    params.require(:genre).permit(:name, :film_ids => [])
-  end
 end

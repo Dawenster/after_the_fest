@@ -1,4 +1,6 @@
 class Location < ActiveRecord::Base
+  attr_accessible :address, :name, :location_type, :latitude, :longitude, :city, :state_or_province, :country, :film_ids => []
+
   has_and_belongs_to_many :films
 
   geocoded_by :address

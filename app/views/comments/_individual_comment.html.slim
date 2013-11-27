@@ -1,0 +1,8 @@
+.col-md-8
+  .comment-name
+    .pull-left style="font-weight: bold;"
+      = comment.author
+    .pull-right style="font-style: italic; font-size: 12px;"
+      = "#{time_ago_in_words(comment.created_at)} ago"
+  .comment-content
+    = comment.content

@@ -45,10 +45,4 @@ class AwardsController < ApplicationController
     flash[:success] = "#{award.name} has been deleted."
     redirect_to admin_awards_path
   end
-
-  private
-
-  def award_params
-    params.require(:award).permit(:name, :image, :film_ids => [])
-  end
 end

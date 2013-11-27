@@ -1,5 +1,5 @@
 class Vote < ActiveRecord::Base
-  validates :ip_address, :uniqueness => true
+  attr_accessible :ip_address, :film_id
 
   belongs_to :film
 end

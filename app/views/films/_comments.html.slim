@@ -1,2 +1,50 @@
+.create-comments
+  = simple_form_for Comment.new, :url => url_for(:action => "create", :controller => "comments"), :html => { class: 'form-horizontal', role: "form" } do |f|
+    .col-md-8
+      .form-group
+        label.control-label.col-sm-2 for="comment_author" style="text-align: left;"
+          b Name:
+        .col-md-10
+          = f.text_field :author, :class => "form-control", :placeholder => "Enter your name"
+
+      .form-group
+        label.control-label.col-sm-2 for="comment_content" style="text-align: left;"
+          b Comment:
+        .col-md-10
+          = f.text_area :content, :class => "form-control", :rows => "4", :placeholder => "Leave a comment"
+
+      = f.hidden_field :film_id, :value => @film.id
+
+    .col-md-4
+      = show_simple_captcha(:label => "To make sure you're human", :placeholder => "Enter the text above")
+      button.btn.btn-primary.post-button style="margin-top: 15px;" type="submit"
+        | Post
+
 .comments-bucket
-  | Comments go here
+  - @film.comments.order("created_at DESC").each do |comment|
+    = render "comments/individual_comment", :comment => comment
+
+javascript:
+  $(document).ready(function() {
+    $(".post-button").click(function(e) {
+      e.preventDefault();
+      var formData = {
+        comment: { 
+          author: $("#comment_author").val(),
+          content: $("#comment_content").val(),
+          film_id: $("#comment_film_id").val()
+        },
+        captcha: $("#captcha").val(),
+        captcha_key: $("#captcha_key").val()
+      }
+      $.ajax({
+        url: "/comments",
+        method: "post",
+        dataType: "json",
+        data: formData
+      })
+      .done(function(data) {
+        
+      })
+    });
+  });

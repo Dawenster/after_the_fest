@@ -1,6 +1,25 @@
 class Film < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
 
+  attr_accessible :name,
+                  :embed_url,
+                  :image,
+                  :up_votes,
+                  :down_votes,
+                  :slug,
+                  :festival_id, 
+                  :director,
+                  :writer,
+                  :starring,
+                  :description,
+                  :run_time,
+                  :screening,
+                  :start,
+                  :end,
+                  :genre_ids => [],
+                  :awards_ids => [],
+                  :location_ids => []
+
   s3_credentials_hash = {
     :access_key_id => ENV['AWS_ACCESS_KEY'],
     :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
