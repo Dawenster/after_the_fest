@@ -14,8 +14,8 @@ div
 div
   = "<strong>Starring:</strong> #{film.starring}".html_safe
 br
-div
-  = "#{truncate(film.description, length: 100, omission: "... ")} #{"<a href=/#{film.festival.slug}/#{film.slug}>more</a>" if film.description.length > 100}".html_safe
+.popover-description id="description-#{film.id}"
+  = "#{truncate(film.description, length: 100, omission: "... ")} #{"<a href='#' class='more-description' data-film-id=" + "#{film.id}" + ">more</a>" if film.description.length > 100}".html_safe
 br
 div
   = "#{'<strong>Awards:</strong> ' + film.awards.map{|award| award.name}.join(', ') + '' if film.awards.any?}".html_safe

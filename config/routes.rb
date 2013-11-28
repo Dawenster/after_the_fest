@@ -25,12 +25,19 @@ AfterTheFest::Application.routes.draw do
   end
 
   resources :votes, :only => [:create]
+  
   resources :comments, :only => [:create]
+
+  get "/film_description/:film_id" => "films#film_description", :as => :film_description
 
   get "/search" => "searches#search", :as => :search
   get "/searchable_films" => "films#searchable_films", :as => :searchable_films
+
   get "/genres" => "genres#show", :as => :public_genre
+
   get "/awards" => "awards#index", :as => :public_awards
+
   get "/:festival/:slug" => "films#show", :as => :public_film
+
   get "/:slug" => "festivals#show", :as => :public_festival
 end

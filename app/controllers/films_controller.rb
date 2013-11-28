@@ -1,9 +1,17 @@
 class FilmsController < ApplicationController
-  http_basic_authenticate_with :name => ENV['ADMIN_NAME'], :password => ENV['ADMIN_PASSWORD'], :except => [:show, :searchable_films]
+  http_basic_authenticate_with :name => ENV['ADMIN_NAME'], :password => ENV['ADMIN_PASSWORD'],
+    :except => [:show, :searchable_films, :film_description]
 
   def searchable_films
     respond_to do |format|
       format.json { render :json => { :films => Film.all_films } }
+    end
+  end
+
+  def film_description
+    respond_to do |format|
+      film = Film.find(params[:film_id])
+      format.json { render :json => { :description => film.description, :id => film.id } }
     end
   end
 

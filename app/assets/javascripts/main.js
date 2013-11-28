@@ -43,6 +43,17 @@ $(document).ready(function() {
     parent.popover("show");
     parent.addClass("hovering");
     parent.siblings(".play-button").removeClass("hidden");
+    $("a.more-description").click(function(e) {
+      e.preventDefault();
+      $.ajax({
+        url: "/film_description/" + $(this).attr("data-film-id"),
+        method: "get",
+        dataType: "json"
+      })
+      .done(function(data) {
+        $("#description-" + data.id).html(data.description);
+      });
+    });
   }, function(e) {
     var target = $(e.target);
     var parent = target.parent();
