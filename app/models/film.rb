@@ -17,7 +17,7 @@ class Film < ActiveRecord::Base
                   :start,
                   :end,
                   :genre_ids,
-                  :awards_ids,
+                  :award_ids,
                   :location_ids
 
   s3_credentials_hash = {

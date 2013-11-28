@@ -17,6 +17,10 @@ class FilmsController < ApplicationController
 
   def show
     @film = Film.find_by_slug(params[:slug])
+    @genres = []
+    @film.genres.each do |genre|
+      @genres << "<strong><a href=/genres?type=#{genre.name}>#{genre.name}</a></strong>"
+    end
     @festival = @film.festival
     @geoblock = geoblock?(@film)
     @availability_block = !@film.available?

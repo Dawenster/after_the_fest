@@ -42,6 +42,9 @@
     = f.association :genres, :as => :check_boxes, :label => "Genre(s)"
 
   .form-group
+    = f.association :awards, :as => :check_boxes, :label => "Award(s)"
+
+  .form-group
     label for="film_description"
       b Film description / synopsis
     = f.text_area :description, :value => @film.description, :class => "form-control", :rows => 10

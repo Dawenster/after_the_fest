@@ -27,13 +27,17 @@ css:
           h3
             = @film.name
           p
+            = @genres.join(", ").html_safe
+          p
             = "<strong>Directed by:</strong> #{@film.director}".html_safe
           p
-            = "<strong>Writer:</strong> #{@film.writer}".html_safe
+            = "<strong>Writer(s):</strong> #{@film.writer}".html_safe
           p
             = "<strong>Starring:</strong> #{@film.starring}".html_safe
           p
             = @film.description.html_safe
+          p
+            = "#{'<strong>Award(s):</strong> ' + @film.awards.map{|award| award.name}.join(', ') + '' if @film.awards.any?}".html_safe
           p
             = "<strong>Run time:</strong> #{@film.run_time} mins".html_safe
           p

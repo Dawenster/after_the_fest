@@ -7,7 +7,7 @@ br
 div style="#{'clear: both; margin-top: 15px' if genres.any?}"
   = "<strong>Directed by:</strong> #{film.director}".html_safe
 div
-  = "<strong>Writer:</strong> #{film.writer}".html_safe
+  = "<strong>Writer(s):</strong> #{film.writer}".html_safe
 div
   = "<strong>Starring:</strong> #{film.starring}".html_safe
 br
@@ -15,7 +15,7 @@ br
   = "#{truncate(film.description, length: 100, omission: "... ")} #{"<a href='#' class='more-description' data-film-id=" + "#{film.id}" + ">more</a>" if film.description.length > 100}".html_safe
 br
 div
-  = "#{'<strong>Awards:</strong> ' + film.awards.map{|award| award.name}.join(', ') + '' if film.awards.any?}".html_safe
+  = "#{'<strong>Award(s):</strong> ' + film.awards.map{|award| award.name}.join(', ') + '' if film.awards.any?}".html_safe
 div
   = "<strong>Run time:</strong> #{film.run_time} mins".html_safe
 div
