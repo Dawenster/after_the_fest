@@ -1,11 +1,11 @@
 .top-of-popover
-  .pull-left
-    = genres.join(", ").html_safe
   .pull-right
     i.fa.fa-thumbs-up style="margin-right: 10px;"
       = "  #{number_with_delimiter(film.up_votes, :delimiter => ",")}"
     i.fa.fa-thumbs-down
       = "  #{number_with_delimiter(film.down_votes, :delimiter => ",")}"
+  .pull-left
+    = genres.join(", ").html_safe
 br
 div style="#{'clear: both; margin-top: 15px' if genres.any?}"
   = "<strong>Directed by:</strong> #{film.director}".html_safe
