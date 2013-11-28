@@ -8,6 +8,10 @@ $(document).ready(function() {
   .done(function(data) {
     allFilms = data.films;
     var lastId = "0";
+    if ($(window).width() > 600) {
+      var myPosition = "right top";
+      var atPosition = "right bottom";
+    }
     $("#search-bar").autocomplete({
       source: allFilms,
       focus: function(event, ui) {
@@ -18,8 +22,8 @@ $(document).ready(function() {
         return false;
       },
       position: {
-        my: "right top",
-        at: "right bottom"
+        my: myPosition,
+        at: atPosition
       },
       select: function(event, ui) {
         window.location = ui.item.link;

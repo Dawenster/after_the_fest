@@ -84,5 +84,6 @@ $(document).ready(function() {
 
   if (Modernizr.touch) {
     $(".touch-info").removeClass("hidden");
+    $(".navbar-fixed-top").attr("style", "position: absolute !important;");
   }
 });
