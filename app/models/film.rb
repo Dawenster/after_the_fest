@@ -44,12 +44,13 @@ class Film < ActiveRecord::Base
 
   def self.all_films
     films = []
-    Film.all.each do |film|
+    Film.all.each_with_index do |film, i|
       films << {
-        "value" => "/#{film.festival.slug}/#{film.slug}",
-        "label" => film.name.truncate(30),
-        "desc" => film.festival.name.truncate(38),
-        "icon" => film.image.url(:thumb)
+        "value" => film.name.truncate(30),
+        "link" => "/#{film.festival.slug}/#{film.slug}",
+        "festival" => film.festival.name.truncate(38),
+        "icon" => film.image.url(:thumb),
+        "num" => i + 1
       }
     end
     return films
