@@ -1,38 +1,17 @@
 .voting-bucket
-  .col-xs-5.col-sm-4.col-md-3.voting-section style="font-weight: bold;"
+  .col-xs-5.col-sm-4.col-md-3.voting-space style="font-weight: bold;"
     - if @film.votes.map{ |vote| vote.ip_address }.include?(request.location.data["ip"])
       | Thank you for voting
     - else
       span
-        i.fa.fa-thumbs-o-up.fa-2x.vote-button data-vote-type="up"
+        i.fa.fa-thumbs-o-up.fa-2x.vote-button data-film-id="#{@film.id}" data-vote-type="up"
       span style="margin: 0 20px; font-size: 18px;"
         | Like
       span
-        i.fa.fa-thumbs-o-down.fa-2x.vote-button data-vote-type="down"
+        i.fa.fa-thumbs-o-down.fa-2x.vote-button data-film-id="#{@film.id}" data-vote-type="down"
   .col-xs-7.visible-xs style="text-align: right;"
     = render "vote_count", :film => @film
   .col-xs-12.col-sm-4.col-md-6
     = render "layouts/share_this"
   .col-sm-4.col-md-3.hidden-xs style="text-align: right;"
     = render "vote_count", :film => @film
-
-javascript:
-  $(document).ready(function() {
-    $(".vote-button").click(function(e) {
-      $.ajax({
-        url: '/votes',
-        method: 'post',
-        dataType: 'json',
-        data: { film_id: "#{@film.id}", vote_type: $(this).attr("data-vote-type") }
-      })
-      .done(function(data) {
-        var count = "  " + data.count;
-        if (data.vote_type == "up") {
-          $(".fa-thumbs-up").text(count);
-        } else {
-          $(".fa-thumbs-down").text(count);
-        }
-        $(".voting-section").text("Thank you for voting");
-      })
-    });
-  });
