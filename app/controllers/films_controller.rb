@@ -70,19 +70,22 @@ class FilmsController < ApplicationController
   end
 
   def geoblock?(film)
-    request_data = request.location.data
-    return false if film.locations.empty? # No geoblocking set - anyone can watch
-    return false if request_data["ip"] == "127.0.0.1" # Local development environment
-    film.locations.each do |location|
-      case location.location_type
-      when "City"
-        return false if location.city == request_data["city"]
-      when "State or Province"
-        return false if location.state_or_province == request_data["region_name"]
-      when "Country"
-        return false if location.country == request_data["country_name"]
+    begin
+      request_data = request.location.data
+      return false if film.locations.empty? # No geoblocking set - anyone can watch
+      return false if request_data["ip"] == "127.0.0.1" # Local development environment
+      film.locations.each do |location|
+        case location.location_type
+        when "City"
+          return false if location.city == request_data["city"]
+        when "State or Province"
+          return false if location.state_or_province == request_data["region_name"]
+        when "Country"
+          return false if location.country == request_data["country_name"]
+        end
       end
-    end
-    return true
+      return true
+    rescue
+      return false # If geoblocking has issues, everyone can watch
   end
 end
