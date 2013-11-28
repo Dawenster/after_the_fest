@@ -31,9 +31,10 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
       li
         a href="#{public_awards_path}"
           | AWARD WINNERS
-    form.navbar-form.navbar-right role="search"
+    form.navbar-form.navbar-right.search-form role="search"
       .form-group
-        input.form-control.visible-lg#search-bar placeholder="Search" type="text"
-      button.btn.btn-default type="submit" style="height: 34px;"
-        i.fa.fa-search-plus.hidden-lg
-        i.fa.fa-search.visible-lg
+        input.form-control#search-bar placeholder="Search" type="text"
+        button.btn.btn-default.visible-xs type="submit" style="height: 34px; float: right; width: 14%;"
+          i.fa.fa-search.visible-xs
+      button.btn.btn-default.hidden-xs type="submit" style="height: 34px;"
+        i.fa.fa-search.hidden-xs

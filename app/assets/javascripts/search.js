@@ -7,14 +7,14 @@ $(document).ready(function() {
   })
   .done(function(data) {
     allFilms = data.films;
-    var lastNum = 0;
+    var lastId = "0";
     $("#search-bar").autocomplete({
       source: allFilms,
       focus: function(event, ui) {
         $("#search-bar").val(ui.item.value);
-        $(".ui-autocomplete li:nth-child(" + lastNum + ")").attr("style", "background-color: white;");
-        $(".ui-autocomplete li:nth-child(" + ui.item.num + ")").attr("style", "background-color: #F8F8F8;");
-        lastNum = ui.item.num;
+        $("#" + lastId).attr("style", "background-color: white;");
+        $("#" + ui.item.styleId).attr("style", "background-color: #F8F8F8;");
+        lastId = ui.item.styleId;
         return false;
       },
       position: {
@@ -26,11 +26,17 @@ $(document).ready(function() {
       }
     }).data("ui-autocomplete")._renderItem = function(ul, item) {
       return $( "<li>" )
-      .append("<div style='margin-top: -20px; padding: 5px;'><img height=50px style='float: left;' src="
+      .append("<div class=custom-search-item id="
+        + item.styleId + "><img height=50px style='float: left;' src="
         + item.icon + "><div style='float: left;'><a><strong>"
         + item.value + "</strong><br><div class='search-item-description'>"
         + item.festival + "</div></a></div></div>")
       .appendTo(ul);
     };
+  });
+
+  $(".fa-search").click(function(e) {
+    e.preventDefault();
+    // $(".fa-search-plus").togg
   });
 })

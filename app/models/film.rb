@@ -50,7 +50,7 @@ class Film < ActiveRecord::Base
         "link" => "/#{film.festival.slug}/#{film.slug}",
         "festival" => film.festival.name.truncate(38),
         "icon" => film.image.url(:thumb),
-        "num" => i + 1
+        "styleId" => "search-item-#{i + 1}"
       }
     end
     return films

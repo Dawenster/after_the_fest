@@ -1,6 +1,15 @@
 /* Extra small screens only */
 
 @media (max-width: 768px) {
+  .search-form {
+    height: 60px;
+  }
+
+  #search-bar {
+    float: left;
+    width: 85%;
+  }
+
   .video-holder {
     height: 300px !important;
   }
@@ -17,6 +26,14 @@
 /* Small screens only */
 
 @media (min-width: 768px) and (max-width: 992px) {
+  #search-bar {
+    width: 100px;
+  }
+
+  button.hidden-xs {
+    display: inline !important;
+  }
+
   .video-holder {
     height: 440px !important;
   }
@@ -63,6 +80,10 @@
 /* Medium and large screens */
 
 @media (min-width: 992px) {
+  button.hidden-xs {
+    display: inline !important;
+  }
+
   .video-holder {
     height: 440px !important;
   }
