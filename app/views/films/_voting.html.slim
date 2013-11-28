@@ -1,5 +1,5 @@
 .voting-bucket
-  .pull-left.voting-section style="font-weight: bold;"
+  .col-xs-6.col-sm-3.voting-section style="font-weight: bold;"
     - if @film.votes.map{ |vote| vote.ip_address }.include?(request.location.data["ip"])
       | Thank you for voting
     - else
@@ -9,11 +9,12 @@
         | Like
       span
         i.fa.fa-thumbs-o-down.fa-2x.vote-button data-vote-type="down"
-  .pull-right style="margin-top: 5px;"
-    i.fa.fa-thumbs-up.fa-lg style="margin-right: 10px;"
-      = "  #{number_with_delimiter(@film.up_votes, :delimiter => ",")}"
-    i.fa.fa-thumbs-down.fa-lg
-      = "  #{number_with_delimiter(@film.down_votes, :delimiter => ",")}"
+  .col-xs-6.visible-xs style="text-align: right;"
+    = render "vote_count", :film => @film
+  .col-xs-12.col-sm-6
+    = render "layouts/share_this"
+  .col-sm-3.hidden-xs style="text-align: right;"
+    = render "vote_count", :film => @film
 
 javascript:
   $(document).ready(function() {

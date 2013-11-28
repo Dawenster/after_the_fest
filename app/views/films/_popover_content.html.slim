@@ -1,9 +1,6 @@
 .top-of-popover
-  .pull-right
-    i.fa.fa-thumbs-up style="margin-right: 10px;"
-      = "  #{number_with_delimiter(film.up_votes, :delimiter => ",")}"
-    i.fa.fa-thumbs-down
-      = "  #{number_with_delimiter(film.down_votes, :delimiter => ",")}"
+  .pull-right style="font-size: 10px;"
+    = render "vote_count", :film => film
   .pull-left
     = genres.join(", ").html_safe
 br

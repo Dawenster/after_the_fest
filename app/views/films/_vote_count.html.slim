@@ -1,0 +1,5 @@
+.vote-count
+  i.fa.fa-thumbs-up.fa-lg style="margin-right: 10px;"
+    = "  #{number_with_delimiter(film.up_votes, :delimiter => ",")}"
+  i.fa.fa-thumbs-down.fa-lg
+    = "  #{number_with_delimiter(film.down_votes, :delimiter => ",")}"
