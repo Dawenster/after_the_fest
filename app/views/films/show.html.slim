@@ -14,13 +14,15 @@ css:
     - else
       .video-holder
         = set_video_dimentions(@film.embed_url).html_safe
-      = render "voting"
-      = render "comments"
+      .voting-section
+        = render "voting"
+      .comments-section.visible-md.visible-lg
+        = render "comments"
   .col-md-4.detail-bucket-column style="padding: 0 !important;"
     .detail-bucket
-      .col-xs-6.col-md-12 style="padding:0 !important;"
+      .col-xs-12 style="padding:0 !important;"
         = image_tag(@film.image.url(:display), :width => "100%")
-      .col-xs-6.col-md-12 style="padding:0 !important;"
+      .col-xs-12 style="padding:0 !important;"
         .detail-content
           h3
             = @film.name
@@ -38,3 +40,6 @@ css:
             = "<strong>Screening:</strong> #{@film.screening}".html_safe
           p
             = "<strong>Available:</strong> #{@film.available_range}".html_safe
+      .col-xs-12
+        .comments-section.visible-xs.visible-sm
+          = render "comments"
