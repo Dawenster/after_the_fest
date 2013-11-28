@@ -75,6 +75,16 @@
   .form-group
     = f.association :locations, :as => :check_boxes, :label => "Locations that can watch this film"
 
+  .form-group
+    label for="film_up_votes"
+      b Up votes
+    = f.text_field :up_votes, :value => @film.up_votes, :class => "form-control"
+
+  .form-group
+    label for="film_down_votes"
+      b Down votes
+    = f.text_field :down_votes, :value => @film.down_votes, :class => "form-control"
+
   br
 
   button.btn.btn-success type="submit"
