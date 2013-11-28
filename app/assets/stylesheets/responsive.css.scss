@@ -17,7 +17,7 @@
   .share-this {
     text-align: left;
     margin-top: 60px;
-    margin-left: -20px;
+    margin-left: -10px;
   }
 
   .vote-count {
@@ -85,6 +85,9 @@
 /* Large screens only */
 
 @media (min-width: 1200px) {
+  .voting-section {
+    font-size: 12px;
+  }
 }
 
 /* Extra small and small screens */
@@ -99,7 +102,7 @@
   }
 
   .voting-section {
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 
@@ -112,6 +115,10 @@
 
   .video-holder {
     height: 440px !important;
+  }
+
+  .voting-section {
+    margin-bottom: 20px;
   }
 
   .detail-bucket {

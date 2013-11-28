@@ -89,6 +89,17 @@ $(document).ready(function() {
       }
     }
     currentItem.popover("toggle");
+    $("a.more-description").click(function(e) {
+      e.preventDefault();
+      $.ajax({
+        url: "/film_description/" + $(this).attr("data-film-id"),
+        method: "get",
+        dataType: "json"
+      })
+      .done(function(data) {
+        $("#description-" + data.id).html(data.description);
+      });
+    });
   });
 
   $(".film-grid-item").click(function(e) {
