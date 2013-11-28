@@ -87,5 +87,6 @@ class FilmsController < ApplicationController
       return true
     rescue
       return false # If geoblocking has issues, everyone can watch
+    end
   end
 end
