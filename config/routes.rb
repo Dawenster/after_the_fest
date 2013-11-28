@@ -27,6 +27,7 @@ AfterTheFest::Application.routes.draw do
   resources :votes, :only => [:create]
   resources :comments, :only => [:create]
 
+  get "/search" => "searches#search", :as => :search
   get "/searchable_films" => "films#searchable_films", :as => :searchable_films
   get "/genres" => "genres#show", :as => :public_genre
   get "/awards" => "awards#index", :as => :public_awards

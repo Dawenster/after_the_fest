@@ -39,8 +39,8 @@ $(document).ready(function() {
     };
   });
 
-  $(".fa-search").click(function(e) {
+  $(".search-button").click(function(e) {
     e.preventDefault();
-    // $(".fa-search-plus").togg
+    window.location = "/search?query=" + $("#search-bar").val();
   });
 })

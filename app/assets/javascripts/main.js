@@ -30,7 +30,9 @@ $(document).ready(function() {
     var count = parseInt(currentItem.attr("data-count"));
     if (count % positionIfLast == 0 && positionIfLast != 1) {
       defaultPosition = "left";
-    } else if (positionIfLast == 1 && (gridItems.length / 4 == count || gridItems.length / 4 - 1 == count)) {
+    } else if ( positionIfLast == 1 && 
+                gridItems.length / 4 > 2 && 
+                (gridItems.length / 4 == count || gridItems.length / 4 - 1 == count)) {
       defaultPosition = "top";
     }
     currentItem.attr("data-placement", defaultPosition);
