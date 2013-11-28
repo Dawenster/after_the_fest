@@ -1,0 +1,28 @@
+ul.ui-autocomplete {
+  width: 300px;
+  z-index: 5000;
+  margin-right: 100px;
+  li {
+    height: 60px;
+    font-size: 14px;
+    cursor: pointer;
+    .search-item-description {
+      font-size: 12px;      
+    }
+    &:hover {
+      background-color: #F8F8F8 !important;
+    }
+  }
+}
+
+.ui-menu .ui-menu-item a {
+  // height: 50px !important;
+}
+
+.ui-menu .ui-menu-item a.ui-state-focus,
+.ui-menu .ui-menu-item a.ui-state-active { 
+  background: #F8F8F8 none no-repeat; 
+  display: block;
+  border: 0;
+  border-collapse: collapse;
+}

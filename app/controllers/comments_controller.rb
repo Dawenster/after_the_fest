@@ -4,8 +4,6 @@ class CommentsController < ApplicationController
 
   def create
     respond_to do |format|
-      puts "*" * 100
-      puts params
       params["comment"]["film_id"] = params["comment"]["film_id"].to_i
       comment = Comment.new(params["comment"])
       if simple_captcha_valid? && comment.save

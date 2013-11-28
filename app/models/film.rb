@@ -42,6 +42,19 @@ class Film < ActiveRecord::Base
   has_and_belongs_to_many :awards
   has_and_belongs_to_many :locations
 
+  def self.all_films
+    films = []
+    Film.all.each do |film|
+      films << {
+        "value" => "/#{film.festival.slug}/#{film.slug}",
+        "label" => film.name.truncate(30),
+        "desc" => film.festival.name.truncate(38),
+        "icon" => film.image.url(:thumb)
+      }
+    end
+    return films
+  end
+
   def create_slug
     self.slug = self.to_slug
   end
