@@ -1,0 +1,27 @@
+.top-of-popover
+  .pull-left
+    = genres.join(", ").html_safe
+  .pull-right
+    i.fa.fa-thumbs-up style="margin-right: 10px;"
+      = "  #{number_with_delimiter(film.up_votes, :delimiter => ",")}"
+    i.fa.fa-thumbs-down
+      = "  #{number_with_delimiter(film.down_votes, :delimiter => ",")}"
+br
+div style="#{'clear: both; margin-top: 15px' if genres.any?}"
+  = "<strong>Directed by:</strong> #{film.director}".html_safe
+div
+  = "<strong>Writer:</strong> #{film.writer}".html_safe
+div
+  = "<strong>Starring:</strong> #{film.starring}".html_safe
+br
+div
+  = "#{truncate(film.description, length: 100, omission: "... ")} #{"<a href=/#{film.festival.slug}/#{film.slug}>more</a>" if film.description.length > 100}".html_safe
+br
+div
+  = "#{'<strong>Awards:</strong> ' + film.awards.map{|award| award.name}.join(', ') + '' if film.awards.any?}".html_safe
+div
+  = "<strong>Run time:</strong> #{film.run_time} mins".html_safe
+div
+  = "<strong>Screening:</strong> #{film.screening}".html_safe
+div
+  = "<strong>Available:</strong> #{film.available_range}".html_safe

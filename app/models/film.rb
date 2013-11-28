@@ -65,18 +65,11 @@ class Film < ActiveRecord::Base
   end
 
   def popover_content
-    return content = <<-eos
-      <strong>Directed by:</strong> #{self.director}<br>
-      <strong>Writer:</strong> #{self.writer}<br>
-      <strong>Starring:</strong> #{self.starring}<br>
-      <br>
-      #{truncate(self.description, length: 100, omission: "... ")} #{"<a href=/#{self.festival.slug}/#{self.slug}>more</a>" if self.description.length > 100}<br>
-      <br>
-      #{'<strong>Awards: </strong>' + self.awards.map{|award| award.name}.join(', ') + '<br>' if self.awards.any?}
-      <strong>Run time:</strong> #{self.run_time} mins<br>
-      <strong>Screening:</strong> #{self.screening}<br>
-      <strong>Available:</strong> #{self.available_range}
-    eos
+    genres = []
+    self.genres.each do |genre|
+      genres << "<strong><a href=/genres?type=#{genre.name}>#{genre.name}</a></strong>"
+    end
+    FilmsController.new.render_to_string(:partial => 'films/popover_content', :locals => { :film => self, :genres => genres })
   end
 
   def available_range
