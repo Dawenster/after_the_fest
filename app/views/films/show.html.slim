@@ -10,17 +10,17 @@ css:
     - if @geoblock
       | Sorry, this film is not available in your area
       javascript:
-        var category = "#{@film.name}";
+        var category = "#{@film.slug}";
         var action = "Geoblock";
-        var opt_label = "Date: " + new Date() + "Location: " + "#{@address}";
+        var opt_label = "Location: " + "#{@address}" + " | Date: " + new Date();
         _gaq.push(['_trackEvent', category, action, opt_label]);
 
     - elsif @availability_block
       = "Sorry, this film #{Time.now > @film.start ? 'was' : 'is'} only available from #{@film.available_range}"
       javascript:
-        var category = "#{@film.name}";
+        var category = "#{@film.slug}";
         var action = "Not available";
-        var opt_label = "Date: " + new Date() + "Location: " + "#{@address}";
+        var opt_label = "Location: " + "#{@address}" + " | Date: " + new Date();
         _gaq.push(['_trackEvent', category, action, opt_label]);
 
     - else
@@ -31,9 +31,9 @@ css:
       .comments-section.visible-md.visible-lg
         = render "comments"
       javascript:
-        var category = "#{@film.name}";
+        var category = "#{@film.slug}";
         var action = "Able to watch";
-        var opt_label = "Date: " + new Date() + "Location: " + "#{@address}";
+        var opt_label = "Location: " + "#{@address}" + " | Date: " + new Date();
         _gaq.push(['_trackEvent', category, action, opt_label]);
 
   .col-md-4.detail-bucket-column style="padding: 0 !important;"
