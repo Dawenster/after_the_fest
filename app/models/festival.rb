@@ -23,4 +23,8 @@ class Festival < ActiveRecord::Base
   validates :banner, :presence => true
 
   has_many :films
+
+  def genres
+    self.films.map{ |film| film.genres }.flatten.uniq.sort_by{ |film| film.name }
+  end
 end

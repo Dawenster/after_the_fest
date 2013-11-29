@@ -2,8 +2,9 @@ class GenresController < ApplicationController
   http_basic_authenticate_with :name => ENV['ADMIN_NAME'], :password => ENV['ADMIN_PASSWORD'], :except => [:show]
 
   def show
+    @festival = Festival.find_by_slug(params[:festival])
     @genre = Genre.find_by_name(params[:type])
-    @films = @genre.films
+    @films = @festival.films.select{ |film| film.genres.include?(@genre) }
   end
 
   def admin_index

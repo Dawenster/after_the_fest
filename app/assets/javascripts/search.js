@@ -43,4 +43,15 @@ $(document).ready(function() {
     e.preventDefault();
     window.location = "/search?query=" + $("#search-bar").val();
   });
+
+  $(".expand-search").click(function(e) {
+    e.preventDefault();
+    $(".search-button").removeClass("hidden-sm");
+    $(".fa-search").removeClass("hidden-sm");
+    $("#search-bar").removeClass("hidden-sm");
+    $(".shrink-search").removeClass("hidden");
+    $(".expand-search").addClass("hidden");
+
+    $(".search-removable").toggle();
+  });
 })

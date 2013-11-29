@@ -1,5 +1,7 @@
+= render "layouts/header"
+
 h3
-  = "Genre: #{params[:type]}"
+  = "Genre: #{@genre.name}"
 
 .row
   - @films.each_with_index do |film, i|

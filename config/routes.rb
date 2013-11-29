@@ -33,10 +33,10 @@ AfterTheFest::Application.routes.draw do
   get "/search" => "searches#search", :as => :search
   get "/searchable_films" => "films#searchable_films", :as => :searchable_films
 
-  get "/genres" => "genres#show", :as => :public_genre
 
   get "/awards" => "awards#index", :as => :public_awards
 
+  get "/:festival/genres" => "genres#show", :as => :public_genre
   get "/:festival/:slug" => "films#show", :as => :public_film
 
   get "/:slug" => "festivals#show", :as => :public_festival

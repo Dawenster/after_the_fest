@@ -42,7 +42,12 @@
 
 @media (min-width: 768px) and (max-width: 992px) {
   #search-bar {
-    width: 100px;
+    width: 174px;
+  }
+
+  .title-dropdown {
+    left: auto !important;
+    right: 0 !important;
   }
 
   button.hidden-xs {

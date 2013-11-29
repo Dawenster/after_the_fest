@@ -29,6 +29,11 @@ html,body {
   margin-top: 40px !important;
 }
 
+.title-dropdown {
+  max-height: 310px;
+  overflow: auto;
+}
+
 .festival-banner {
   position: absolute;
   top: 0;
