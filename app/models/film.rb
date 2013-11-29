@@ -67,7 +67,7 @@ class Film < ActiveRecord::Base
   def popover_content
     genres = []
     self.genres.each do |genre|
-      genres << "<strong><a href=/genres?type=#{genre.name}>#{genre.name}</a></strong>"
+      genres << "<strong><a href=/#{self.festival.slug}/genres?type=#{genre.name}>#{genre.name}</a></strong>"
     end
     FilmsController.new.render_to_string(:partial => 'films/popover_content', :locals => { :film => self, :genres => genres })
   end

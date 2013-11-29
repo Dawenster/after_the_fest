@@ -19,7 +19,7 @@ class FilmsController < ApplicationController
     @film = Film.find_by_slug(params[:slug])
     @genres = []
     @film.genres.each do |genre|
-      @genres << "<strong><a href=/genres?type=#{genre.name}>#{genre.name}</a></strong>"
+      @genres << "<strong><a href=/#{@film.festival.slug}/genres?type=#{genre.name}>#{genre.name}</a></strong>"
     end
     @festival = @film.festival
     @geoblock = geoblock?(@film)
