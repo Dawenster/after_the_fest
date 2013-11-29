@@ -17,6 +17,7 @@ class Festival < ActiveRecord::Base
                     :bucket => "afterthefest"
 
   validates :name, :presence => true
+  validates :background_colour, :presence => true
   validates :slug, :presence => true
   validates :festival_url, :presence => true
   validates :logo, :presence => true
