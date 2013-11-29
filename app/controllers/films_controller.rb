@@ -24,7 +24,7 @@ class FilmsController < ApplicationController
     @festival = @film.festival
     geoblock_result = geoblock?(@film)
     @geoblock = geoblock_result[0]
-    @geoblock_location = geoblock_result[1]
+    @address = geoblock_result[1]
     @availability_block = !@film.available?
   end
 
