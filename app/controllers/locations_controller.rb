@@ -26,7 +26,7 @@ class LocationsController < ApplicationController
   end
 
   def update
-    set_name_as_input_addressy
+    set_name_as_input_address
     @location = Location.find(params[:id])
     @location.assign_attributes(params[:location])
     if @location.save

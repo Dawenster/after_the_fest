@@ -9,6 +9,19 @@ css:
   .col-md-8 style="padding: 0 !important;"
     - if @geoblock
       | Sorry, this film is not available in your area
+      javascript:
+        var category = "Films";
+        var action = "Geoblock";
+        var opt_label = {
+          festival: "#{@festival.name}",
+          film: "#{@film.name}",
+          location: "#{@geoblock_location}"
+        };
+        _gaq.push(['_trackEvent', category, action, opt_label]);
+        console.log(category);
+        console.log(action);
+        console.log(opt_label);
+
     - elsif @availability_block
       = "Sorry, this film #{Time.now > @film.start ? 'was' : 'is'} only available from #{@film.available_range}"
     - else

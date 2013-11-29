@@ -22,7 +22,9 @@ class FilmsController < ApplicationController
       @genres << "<strong><a href=/#{@film.festival.slug}/genres?type=#{genre.name}>#{genre.name}</a></strong>"
     end
     @festival = @film.festival
-    @geoblock = geoblock?(@film)
+    geoblock_result = geoblock?(@film)
+    @geoblock = geoblock_result[0]
+    @geoblock_location = geoblock_result[1]
     @availability_block = !@film.available?
   end
 
@@ -84,21 +86,29 @@ class FilmsController < ApplicationController
   def geoblock?(film)
     begin
       request_data = request.location.data
-      return false if film.locations.empty? # No geoblocking set - anyone can watch
-      return false if request_data["ip"] == "127.0.0.1" # Local development environment
+      address = address(request_data)
+      return [false, address] if film.locations.empty? # No geoblocking set - anyone can watch
+      # return [false, "Local development"] if request_data["ip"] == "127.0.0.1" # Local development environment
       film.locations.each do |location|
         case location.location_type
         when "City"
-          return false if location.city == request_data["city"]
+          return [false, address] if location.city == request_data["city"]
         when "State or Province"
-          return false if location.state_or_province == request_data["region_name"]
+          return [false, address] if location.state_or_province == request_data["region_name"]
         when "Country"
-          return false if location.country == request_data["country_name"]
+          return [false, address] if location.country == request_data["country_name"]
         end
       end
-      return true
+      return [true, address]
     rescue
-      return false # If geoblocking has issues, everyone can watch
+      return [false, "Issue with Geoblock - anyone can watch"] # If geoblocking has issues, everyone can watch
     end
+  end
+
+  def address(request)
+    str = "City: #{request['city'].present? ? request['city'] : 'Unknown'}"
+    str += ", Region: #{request['region_name'].present? ? request['region_name'] : 'Unknown'}"
+    str += ", Country: #{request['country_name'].present? ? request['country_name'] : 'Unknown'}"
+    return str
   end
 end
