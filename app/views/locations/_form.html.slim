@@ -2,7 +2,17 @@
   .form-group
     label for="location_address"
       b Name
-    = f.text_field :address, :value => @location.address, :class => "form-control"
+    = f.text_field :address, :value => @location.name, :class => "form-control"
+
+  div
+    = "Literal address: #{@location.address}"
+  div
+    = "City: #{@location.city}"
+  div
+    = "Region: #{@location.state_or_province}"
+  div
+    = "Country: #{@location.country}"
+  br
 
   .form-group
     label for="location_location_type"
