@@ -17,3 +17,9 @@ ul.nav.nav-pills.nav-stacked
   li class="#{'active' if params[:controller] == 'comments'}"
     a href="#{comments_path}"
       | Comments
+  li class="#{'active' if params[:controller] == 'key_inputs' && params[:action] == 'about_edit'}"
+    a href="#{about_edit_path}"
+      | About us
+  li class="#{'active' if params[:controller] == 'key_inputs' && params[:action] == 'terms_edit'}"
+    a href="#{terms_edit_path}"
+      | Terms

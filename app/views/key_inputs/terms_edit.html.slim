@@ -1,0 +1,21 @@
+.admin-container
+  .row
+    .col-md-2
+      = render "admins/admin_nav"
+    .col-md-10
+      #flash
+        - flash.each do |name, msg|
+          = content_tag :div, msg, :id => "flash_#{name}", class: "alert alert-#{name}"
+
+      h2
+        | Edit Terms and Conditions
+      = simple_form_for @key_input, :action => "terms_update", :controller => "key_inputs" do |f|
+        .form-group
+          label for="key_input_terms_and_conditions"
+            b Terms and Conditions
+          = f.text_area :terms_and_conditions, :value => @key_input.terms_and_conditions, :class => "form-control", :rows => 20
+
+        br
+
+        button.btn.btn-success type="submit"
+          | Save

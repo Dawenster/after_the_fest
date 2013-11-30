@@ -1,8 +1,8 @@
 .footer
   = "© #{Time.now.year} After the Fest ⋅ "
   span
-    = link_to("Terms and conditions", "#") + " ⋅ "
+    = link_to("Terms and conditions", "#{terms_and_conditions_path}") + " ⋅ "
     span
-      = link_to("About us", "#") + " ⋅ "
+      = link_to("About us", "#{about_us_path}") + " ⋅ "
     span
-      = link_to("Contact us", "#")
+      = link_to("Contact us", "#{contact_us_path}")

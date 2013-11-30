@@ -3,6 +3,10 @@ AfterTheFest::Application.routes.draw do
 
   resources :festivals, :only => [:index]
 
+  get "/about-us" => "pages#about_us", :as => :about_us
+  get "/contact-us" => "pages#contact_us", :as => :contact_us
+  get "/terms-and-conditions" => "pages#terms_and_conditions", :as => :terms_and_conditions
+
   scope "/admin" do
     get "/" => "admins#index", :as => :admins
     
@@ -22,6 +26,10 @@ AfterTheFest::Application.routes.draw do
 
     resources :comments, :only => [:index, :destroy]
     get "/comments/:film_id" => "comments#film_comments", :as => :film_comments
+
+    resources :key_inputs, :only => [:update]
+    get "/about" => "key_inputs#about_edit", :as => :about_edit
+    get "/terms" => "key_inputs#terms_edit", :as => :terms_edit
   end
 
   resources :votes, :only => [:create]
