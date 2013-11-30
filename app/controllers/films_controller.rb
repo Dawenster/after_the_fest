@@ -88,7 +88,7 @@ class FilmsController < ApplicationController
       request_data = request.location.data
       address = address(request_data)
       return [false, address] if film.locations.empty? # No geoblocking set - anyone can watch
-      # return [false, "Local development"] if request_data["ip"] == "127.0.0.1" # Local development environment
+      return [false, "Local development"] if request_data["ip"] == "127.0.0.1" # Local development environment
       film.locations.each do |location|
         case location.location_type
         when "City"
