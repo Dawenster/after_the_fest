@@ -16,6 +16,7 @@ class FilmsController < ApplicationController
   end
 
   def show
+    Time.zone = cookies["jstz_time_zone"]
     @film = Film.find_by_slug(params[:slug])
     @genres = []
     @film.genres.each do |genre|
