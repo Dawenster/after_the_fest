@@ -1,4 +1,7 @@
 $(document).ready(function() {
+  var timeZone = jstz.determine();
+  document.cookie = 'jstz_time_zone='+timeZone.name()+';';
+  
   $(".festival-banner").click(function(e) {
     window.location = $(this).attr("data-url");
   });

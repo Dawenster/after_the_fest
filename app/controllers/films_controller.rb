@@ -80,7 +80,8 @@ class FilmsController < ApplicationController
   end
 
   def convert_to_date_object(str)
-    DateTime.strptime(str, "%m/%d/%Y")
+    Time.zone = cookies["jstz_time_zone"]
+    DateTime.strptime(str, "%m/%d/%Y").end_of_day
   end
 
   def geoblock?(film)
