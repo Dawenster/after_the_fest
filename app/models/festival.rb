@@ -1,5 +1,5 @@
 class Festival < ActiveRecord::Base
-  attr_accessible :name, :festival_url, :logo, :banner, :background_colour, :slug
+  attr_accessible :name, :festival_url, :logo, :banner, :background_colour, :slug, :start, :end, :status, :show_date
 
   s3_credentials_hash = {
     :access_key_id => ENV['AWS_ACCESS_KEY'],

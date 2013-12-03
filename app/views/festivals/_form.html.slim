@@ -35,9 +35,43 @@
       b Festival page's background colour (e.g. "white" or "#FFFFFF")
     = f.text_field :background_colour, :value => @festival.background_colour, :class => "form-control"
 
+  .row
+    .col-md-12
+      .form-group
+        label for="festival_start" style="margin-left: 10px; margin-top: 7px;"
+          b Start date (mm/dd/yyyy) for the festival on ATF (inclusive)
+        .col-md-2 style="padding: 0 !important;"
+          = f.text_field :start, :value => "#{@festival.start.strftime("%m/%d/%Y") if @festival.start}", :class => "form-control", :placeholder => "Click to select"
+
+  .row
+    .col-md-12
+      .form-group
+        label for="festival_end" style="margin-left: 10px; margin-top: 7px;"
+          b End date (mm/dd/yyyy) for the festival on ATF (inclusive)
+        .col-md-2 style="padding: 0 !important;"
+          = f.text_field :end, :value => "#{@festival.end.strftime("%m/%d/%Y") if @festival.end}", :class => "form-control", :placeholder => "Click to select"
+
+  .form-group
+    label for="festival_show_date"
+      b Show date on landing page?
+    div
+      = f.select :show_date, [["Yes", true], ["No", false]]
+
+  .form-group
+    label for="festival_status"
+      b Landing page status
+    div
+      = f.select :status, ["Now Playing", "Coming Soon", "Recently Viewed"], :include_blank => "Don't show on landing page"
+
   button.btn.btn-success type="submit"
     = "#{Festival.find_by_id(@festival.id) ? "Save" : "Create"}"
 
   - if Festival.find_by_id(@festival.id)
     div style="padding: 10px 5px;"
       = link_to "Delete", { :id => @festival.id, :action => :destroy }, :method => :delete, :confirm => "You know what you're doing right?  You're about to delete this festival..."
+
+javascript:
+  $(function() {
+    $( "#festival_start" ).datepicker();
+    $( "#festival_end" ).datepicker();
+  });

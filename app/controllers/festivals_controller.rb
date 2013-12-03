@@ -3,6 +3,7 @@ class FestivalsController < ApplicationController
 
   def index
     @festivals = Festival.order("lower(name) ASC")
+    @key_input = KeyInput.last
   end
 
   def show
@@ -10,7 +11,7 @@ class FestivalsController < ApplicationController
   end
 
   def admin_index
-    @festivals = Festival.all
+    @festivals = Festival.order("lower(name) ASC")
   end
 
   def new
@@ -18,6 +19,8 @@ class FestivalsController < ApplicationController
   end
 
   def create
+    params = convert_param_boolean
+    params = convert_param_dates
     @festival = Festival.new(params[:festival])
     if @festival.save
       flash[:success] = "#{@festival.name} has been successfully created."
@@ -34,6 +37,8 @@ class FestivalsController < ApplicationController
 
   def update
     @festival = Festival.find(params[:id])
+    params = convert_param_boolean
+    params = convert_param_dates
     @festival.assign_attributes(params[:festival])
     if @festival.save
       flash[:success] = "#{@festival.name} has been successfully updated."
@@ -48,5 +53,23 @@ class FestivalsController < ApplicationController
     festival = Festival.find(params[:id]).destroy
     flash[:success] = "#{festival.name} has been deleted."
     redirect_to admin_festivals_path
+  end
+
+  private
+
+  def convert_param_boolean
+    params[:festival][:show_date] = params[:festival][:show_date] == "Yes" ? true : false
+    return params
+  end
+
+  def convert_param_dates
+    params[:festival][:start] = convert_to_date_object(params[:festival][:start])
+    params[:festival][:end] = convert_to_date_object(params[:festival][:end])
+    return params
+  end
+
+  def convert_to_date_object(str)
+    Time.zone = cookies["jstz_time_zone"]
+    DateTime.strptime(str, "%m/%d/%Y").end_of_day
   end
 end

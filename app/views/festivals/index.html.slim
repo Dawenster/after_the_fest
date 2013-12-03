@@ -1,5 +1,8 @@
-h1 style="text-align: center; padding: 30px;"
-  | Select a festival
+p
+  = @key_input.about_blurb
+
+h3
+  | Now Playing
 - @festivals.each do |festival|
   .col-md-4
     .index-festival-logo
