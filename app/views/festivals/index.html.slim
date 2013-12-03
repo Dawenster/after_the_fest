@@ -1,9 +1,43 @@
-p
+.about-blurb
   = @key_input.about_blurb
 
 h3
-  | Now Playing
-- @festivals.each do |festival|
-  .col-md-4
-    .index-festival-logo
-      = link_to(image_tag(festival.logo.url, :width => "100%"), public_festival_path(festival.slug))
+  b
+    | Now Playing
+
+.row
+  .now-playing-holder
+    - @now_playing.each do |festival|
+      .col-xs-4
+        .index-festival-logo
+          = link_to(image_tag(festival.logo.url(:display), :width => "100%"), public_festival_path(festival.slug))
+        .festival-date
+          = "Expires #{festival.end.strftime('%b %d')}!" if festival.show_date
+
+.row
+  .col-xs-12.col-sm-6
+    h4
+      b
+        .landing-page-subtitle
+          | Coming Soon
+    .landing-page-sub-holder
+      .row
+        - @coming_soon.each do |festival|
+          .col-xs-4
+            .index-festival-logo
+              = link_to(image_tag(festival.logo.url(:display), :width => "100%"), festival.festival_url)
+            .festival-date
+              = "#{festival.start.strftime('%b %d')}" if festival.show_date
+
+  .col-xs-12.col-sm-6
+    h4
+      b
+        .landing-page-subtitle
+          | Recently Viewed
+    .landing-page-sub-holder
+      .row
+        - @recently_viewed.each do |festival|
+          .col-xs-4
+            .index-festival-logo
+              = link_to(image_tag(festival.logo.url(:display), :width => "100%"), festival.festival_url)
+            .festival-date

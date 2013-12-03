@@ -2,7 +2,9 @@ class FestivalsController < ApplicationController
   http_basic_authenticate_with :name => ENV['ADMIN_NAME'], :password => ENV['ADMIN_PASSWORD'], :except => [:index, :show]
 
   def index
-    @festivals = Festival.order("lower(name) ASC")
+    @now_playing = Festival.where(:status => "Now Playing").order("lower(name) ASC").limit(3)
+    @coming_soon = Festival.where(:status => "Coming Soon").order("lower(name) ASC").limit(6)
+    @recently_viewed = Festival.where(:status => "Recently Viewed").order("lower(name) ASC").limit(6)
     @key_input = KeyInput.last
   end
 
@@ -58,7 +60,7 @@ class FestivalsController < ApplicationController
   private
 
   def convert_param_boolean
-    params[:festival][:show_date] = params[:festival][:show_date] == "Yes" ? true : false
+    params[:festival][:show_date] = params[:festival][:show_date] == "true" ? true : false
     return params
   end
 
@@ -70,6 +72,6 @@ class FestivalsController < ApplicationController
 
   def convert_to_date_object(str)
     Time.zone = cookies["jstz_time_zone"]
-    DateTime.strptime(str, "%m/%d/%Y").end_of_day
+    DateTime.strptime(str, "%m/%d/%Y").end_of_day unless str.blank?
   end
 end

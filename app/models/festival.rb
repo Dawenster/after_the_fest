@@ -7,7 +7,7 @@ class Festival < ActiveRecord::Base
   }
 
   has_attached_file :logo, 
-                    :styles => { :thumb => "100x100>" },
+                    :styles => { :thumb => "100x70#", :display => "400x280#" },
                     :s3_credentials => s3_credentials_hash,
                     :bucket => "afterthefest"
 

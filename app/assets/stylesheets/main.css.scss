@@ -13,8 +13,22 @@ html,body {
   overflow: auto;
 }
 
-.index-festival-logo {
-  padding: 20px;
+.about-blurb {
+  margin-top: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.now-playing-holder {
+  margin-top: 30px;
+}
+
+.festival-date {
+  text-align: center;
+  color: red;
+  font-weight: bold;
+  margin: 10px 0;
 }
 
 #main-navbar-collapse {
@@ -38,7 +52,7 @@ html,body {
   position: absolute;
   top: 0;
   left: 0;
-  background-position: center;
+  background-position: left;
   background-size: cover;
   cursor: pointer;
 }

@@ -1,6 +1,10 @@
 /* Extra small screens only */
 
 @media (max-width: 768px) {
+  .landing-page-subtitle {
+    text-align: left;
+  }
+
   .search-form {
     height: 60px;
   }
@@ -41,6 +45,14 @@
 /* Small screens only */
 
 @media (min-width: 768px) and (max-width: 992px) {
+  .landing-page-subtitle {
+    text-align: center;
+  }
+
+  .landing-page-sub-holder {
+    padding: 30px;
+  }
+
   #search-bar {
     width: 174px;
   }
@@ -98,6 +110,11 @@
 /* Extra small and small screens */
 
 @media (max-width: 992px) {
+  .festival-date {
+    font-size: 12px;
+    height: 15px;
+  }
+
   .detail-bucket {
     padding-top: 10px;
   }
@@ -114,6 +131,19 @@
 /* Medium and large screens */
 
 @media (min-width: 992px) {
+  .festival-date {
+    font-size: 18px;
+    height: 30px;
+  }
+
+  .landing-page-sub-holder {
+    padding: 30px;
+  }
+
+  .landing-page-subtitle {
+    text-align: center;
+  }
+
   button.hidden-xs {
     display: inline !important;
   }
