@@ -25,7 +25,7 @@ h3
         - @coming_soon.each do |festival|
           .col-xs-4
             .index-festival-logo
-              = link_to(image_tag(festival.logo.url(:display), :width => "100%"), festival.festival_url)
+              = link_to(image_tag(festival.logo.url(:display), :width => "100%"), festival.festival_url, :target => '_blank')
             .festival-date
               = "#{festival.start.strftime('%b %d')}" if festival.show_date
 
@@ -39,5 +39,5 @@ h3
         - @recently_viewed.each do |festival|
           .col-xs-4
             .index-festival-logo
-              = link_to(image_tag(festival.logo.url(:display), :width => "100%"), festival.festival_url)
+              = link_to(image_tag(festival.logo.url(:display), :width => "100%"), festival.festival_url, :target => '_blank')
             .festival-date
