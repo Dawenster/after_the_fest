@@ -11,8 +11,8 @@ h3 style="font-size: 22px;"
       .col-xs-4
         .index-festival-logo
           = link_to(image_tag(festival.logo.url(:display), :width => "100%"), public_festival_path(festival.slug))
-        .festival-date
-          = "Expires #{festival.end.strftime('%b %d')}!" if festival.show_date
+        / .festival-date
+        /   = "Expires #{festival.end.strftime('%b %d')}!" if festival.show_date
 
 .row
   .col-xs-12.col-sm-6
@@ -26,8 +26,8 @@ h3 style="font-size: 22px;"
           .col-xs-4
             .index-festival-logo
               = link_to(image_tag(festival.logo.url(:display), :width => "100%"), festival.festival_url, :target => '_blank')
-            .festival-date
-              = "#{festival.start.strftime('%b %d')}" if festival.show_date
+            / .festival-date
+            /   = "#{festival.start.strftime('%b %d')}" if festival.show_date
 
   .col-xs-12.col-sm-6
     h4
@@ -40,4 +40,4 @@ h3 style="font-size: 22px;"
           .col-xs-4
             .index-festival-logo
               = link_to(image_tag(festival.logo.url(:display), :width => "100%"), festival.festival_url, :target => '_blank')
-            .festival-date
+            / .festival-date
