@@ -3,7 +3,9 @@ $(document).ready(function() {
   document.cookie = 'jstz_time_zone='+timeZone.name()+';';
   
   $(".festival-banner").click(function(e) {
-    window.location = $(this).attr("data-url");
+    e.preventDefault();
+    var win = window.open($(this).attr("data-url"), '_blank');
+    win.focus();
   });
 
   var gridItems = $(".film-grid-item");
