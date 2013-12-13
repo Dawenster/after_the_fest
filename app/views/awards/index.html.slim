@@ -1,3 +1,10 @@
+css:
+  body {
+    background-color: #{@festival.background_colour} !important;
+  }
+
+= render "layouts/header"
+
 - @awards.each do |award|
   .row
     .awards-title style="margin: 20px 0px;"
@@ -6,4 +13,5 @@
         = award.name
     .awards-bucket
       - award.films.each_with_index do |film, i|
+        - next unless film.festival == @festival
         = render "layouts/film_grid", :film => film, :i => i

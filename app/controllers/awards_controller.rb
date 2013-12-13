@@ -2,7 +2,8 @@ class AwardsController < ApplicationController
   http_basic_authenticate_with :name => ENV['ADMIN_NAME'], :password => ENV['ADMIN_PASSWORD'], :except => [:index]
 
   def index
-    @awards = Award.order("lower(name) ASC")
+    @festival = Festival.find_by_slug(params[:festival])
+    @awards = @festival.films.map{ |f| f.awards }.flatten.sort_by{ |a| a.name }
   end
 
   def admin_index

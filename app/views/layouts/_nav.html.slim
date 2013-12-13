@@ -19,7 +19,7 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
             li
               a href="#{public_festival_path(festival.slug)}"
                 = festival.name
-      - if (params[:controller] == "festivals" && params[:action] == "show") || (params[:controller] == "genres" && params[:action] == "show") || (params[:controller] == "films" && params[:action] == "show")
+      - if (params[:controller] == "festivals" && params[:action] == "show") || (params[:controller] == "genres" && params[:action] == "show") || (params[:controller] == "films" && params[:action] == "show") || (params[:controller] == "awards" && params[:action] == "index")
         li.dropdown.search-removable
           a.dropdown-toggle data-toggle="dropdown" href="#"
             | BY GENRE
@@ -39,7 +39,7 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
                 a href="#{public_film_path(@festival.slug, film.slug)}"
                   = film.name
         li
-          a href="#{public_awards_path}"
+          a href="#{public_awards_path(@festival.slug)}"
             | AWARD WINNERS
         li.search-removable
           a href="#{public_festival_path(@festival.slug)}"
