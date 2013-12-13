@@ -24,6 +24,10 @@
     margin-left: -10px;
   }
 
+  .share-word {
+    float: left;
+  }
+
   .vote-count {
     font-size: 12px;
     margin-top: 3px;
@@ -80,6 +84,12 @@
 
   .share-this {
     text-align: center;
+    padding-left: 50px;
+  }
+
+  .share-word {
+    position: absolute;
+    left: 60px;
   }
 
   .popover {
@@ -97,6 +107,11 @@
   .voting-section {
     font-size: 10px;
   }
+
+  .share-word {
+    position: absolute;
+    left: 40px;
+  }
 }
 
 /* Large screens only */
@@ -104,6 +119,11 @@
 @media (min-width: 1200px) {
   .voting-section {
     font-size: 12px;
+  }
+
+  .share-word {
+    position: absolute;
+    left: 60px;
   }
 }
 
@@ -163,6 +183,7 @@
 
   .share-this {
     text-align: center;
+    padding-left: 50px;
   }
 
   .film-grid-row {
