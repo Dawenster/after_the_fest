@@ -24,6 +24,27 @@ html,body {
   margin-top: 10px;
 }
 
+.double-line-horizontal {
+  border-top: 1px #BFBFBF solid;
+  border-bottom: 1px #BFBFBF solid;
+  height: 5px;
+  width: 100%;
+  margin: 20px auto;
+}
+
+.double-line-vertical {
+  position: absolute;
+  left: 50%;
+  height: 100%;
+  width: 5px;
+  border-left: 1px #BFBFBF solid;
+  border-right: 1px #BFBFBF solid;
+}
+
+.index-festival-logo {
+  margin-bottom: 20px;
+}
+
 .festival-date {
   text-align: center;
   color: red;
