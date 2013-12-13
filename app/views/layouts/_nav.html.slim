@@ -19,6 +19,24 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
             li
               a href="#{public_festival_path(festival.slug)}"
                 = festival.name
+      li.dropdown.search-removable
+        a.dropdown-toggle data-toggle="dropdown" href="#"
+          | BY GENRE
+          b.caret
+        ul.dropdown-menu
+          - @festival.genres.each do |genre|
+            li
+              a href="#{public_genre_path(@festival.slug, :type => genre.name)}"
+                = genre.name
+      li.dropdown.search-removable
+        a.dropdown-toggle data-toggle="dropdown" href="#"
+          | BY TITLE
+          b.caret
+        ul.dropdown-menu.title-dropdown
+          - @festival.films.order("lower(name) ASC").each do |film|
+            li
+              a href="#{public_film_path(@festival.slug, film.slug)}"
+                = film.name
       li
         a href="#{public_awards_path}"
           | AWARD WINNERS
@@ -26,24 +44,6 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
         li.search-removable
           a href="#{public_festival_path(@festival.slug)}"
             | SHOW ALL
-        li.dropdown.search-removable
-          a.dropdown-toggle data-toggle="dropdown" href="#"
-            | BY GENRE
-            b.caret
-          ul.dropdown-menu
-            - @festival.genres.each do |genre|
-              li
-                a href="#{public_genre_path(@festival.slug, :type => genre.name)}"
-                  = genre.name
-        li.dropdown.search-removable
-          a.dropdown-toggle data-toggle="dropdown" href="#"
-            | BY TITLE
-            b.caret
-          ul.dropdown-menu.title-dropdown
-            - @festival.films.order("lower(name) ASC").each do |film|
-              li
-                a href="#{public_film_path(@festival.slug, film.slug)}"
-                  = film.name
     form.navbar-form.navbar-right.search-form role="search"
       .form-group
         input.form-control#search-bar placeholder="Search" type="text"
