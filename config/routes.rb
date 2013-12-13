@@ -31,6 +31,7 @@ AfterTheFest::Application.routes.draw do
     get "/about" => "key_inputs#about_edit", :as => :about_edit
     get "/terms" => "key_inputs#terms_edit", :as => :terms_edit
     get "/vote_messages" => "key_inputs#vote_messages", :as => :vote_messages_edit
+    get "/blocked_images" => "key_inputs#blocked_images", :as => :blocked_images_edit
   end
 
   resources :votes, :only => [:create]

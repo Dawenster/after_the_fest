@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131213223458) do
+ActiveRecord::Schema.define(version: 20131213233308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,14 @@ ActiveRecord::Schema.define(version: 20131213223458) do
     t.datetime "updated_at"
     t.string   "up_vote_message"
     t.string   "down_vote_message"
+    t.string   "blocked_image_file_name"
+    t.string   "blocked_image_content_type"
+    t.integer  "blocked_image_file_size"
+    t.datetime "blocked_image_updated_at"
+    t.string   "unavailable_image_file_name"
+    t.string   "unavailable_image_content_type"
+    t.integer  "unavailable_image_file_size"
+    t.datetime "unavailable_image_updated_at"
   end
 
   create_table "locations", force: true do |t|

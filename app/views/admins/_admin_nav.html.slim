@@ -17,12 +17,15 @@ ul.nav.nav-pills.nav-stacked
   li class="#{'active' if params[:controller] == 'comments'}"
     a href="#{comments_path}"
       | Comments
+  li class="#{'active' if params[:controller] == 'key_inputs' && params[:action] == 'vote_messages'}"
+    a href="#{vote_messages_edit_path}"
+      | Votes
+  li class="#{'active' if params[:controller] == 'key_inputs' && params[:action] == 'blocked_images'}"
+    a href="#{blocked_images_edit_path}"
+      | Blocked
   li class="#{'active' if params[:controller] == 'key_inputs' && params[:action] == 'about_edit'}"
     a href="#{about_edit_path}"
       | About us
   li class="#{'active' if params[:controller] == 'key_inputs' && params[:action] == 'terms_edit'}"
     a href="#{terms_edit_path}"
       | Terms
-  li class="#{'active' if params[:controller] == 'key_inputs' && params[:action] == 'vote_messages'}"
-    a href="#{vote_messages_edit_path}"
-      | Votes

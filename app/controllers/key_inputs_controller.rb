@@ -13,6 +13,10 @@ class KeyInputsController < ApplicationController
     @key_input = KeyInput.last
   end
 
+  def blocked_images
+    @key_input = KeyInput.last
+  end
+
   def update
     @key_input = KeyInput.last
     @key_input.assign_attributes(params[:key_input])
@@ -20,10 +24,12 @@ class KeyInputsController < ApplicationController
       flash[:success] = "Your info has been successfully updated."
       if params[:key_input][:about_blurb].present?
         redirect_to about_edit_path
+      elsif params[:key_input][:terms_and_conditions].present?
+        redirect_to terms_edit_path
       elsif params[:key_input][:up_vote_message].present?
         redirect_to vote_messages_edit_path
       else
-        redirect_to terms_edit_path
+        redirect_to blocked_images_edit_path
       end
     else
       flash.now[:warning] = "Gawd. Fill everything in correctly man."

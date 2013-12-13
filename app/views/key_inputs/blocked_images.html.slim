@@ -1,0 +1,33 @@
+.admin-container
+  .row
+    .col-md-2
+      = render "admins/admin_nav"
+    .col-md-10
+      #flash
+        - flash.each do |name, msg|
+          = content_tag :div, msg, :id => "flash_#{name}", class: "alert alert-#{name}"
+
+      h2
+        | Edit Blocked Images
+
+      = simple_form_for @key_input, :action => "blocked_images_update", :controller => "key_inputs" do |f|
+        .form-group
+          label for="key_input_blocked_image"
+            b Image for films that are geo-blocked. Ideal size: 780px x 440px (width x height)
+          - if @key_input.blocked_image.present?
+            div style="margin-bottom: 20px;"
+              = image_tag(@key_input.blocked_image.url(:thumb))
+          = f.file_field :blocked_image, :class => "form-control"
+
+        .form-group
+          label for="key_input_unavailable_image"
+            b Image for films that are unavailable. Ideal size: 780px x 440px (width x height)
+          - if @key_input.unavailable_image.present?
+            div style="margin-bottom: 20px;"
+              = image_tag(@key_input.unavailable_image.url(:thumb))
+          = f.file_field :unavailable_image, :class => "form-control"
+
+        br
+
+        button.btn.btn-success type="submit"
+          | Save

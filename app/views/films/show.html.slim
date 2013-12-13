@@ -8,7 +8,8 @@ css:
 .row style="min-height: 100%;"
   .col-md-8 style="padding: 0 !important;"
     - if @geoblock
-      | Sorry, this film is not available in your area
+      / | Sorry this film is not available in your area
+      = link_to(image_tag(KeyInput.last.blocked_image.url(:display)), root_path)
       javascript:
         var category = "#{@film.slug}";
         var action = "Geoblock";
@@ -16,7 +17,8 @@ css:
         _gaq.push(['_trackEvent', category, action, opt_label]);
 
     - elsif @availability_block
-      = "Sorry, this film #{Time.now > @film.start ? 'was' : 'is'} only available from #{@film.available_range}"
+      / = "Sorry, this film #{Time.now > @film.start ? 'was' : 'is'} only available from #{@film.available_range}"
+      = link_to(image_tag(KeyInput.last.unavailable_image.url(:display)), @festival.festival_url)
       javascript:
         var category = "#{@film.slug}";
         var action = "Not available";
