@@ -23,6 +23,8 @@
           th
             | Background colour
           th
+            | Status
+          th
             | Banner
 
         - @festivals.each do |festival|
@@ -35,5 +37,7 @@
               = festival.festival_url
             td
               = festival.background_colour
+            td
+              = festival.status
             td
               = image_tag(festival.banner.url(:thumb))
