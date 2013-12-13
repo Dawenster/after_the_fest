@@ -13,7 +13,7 @@ $(document).ready(function() {
       } else {
         $(".fa-thumbs-down").text(count);
       }
-      $(".voting-space").text("Thank you for voting");
+      $(".voting-space").text(data.message);
     })
   });
 });

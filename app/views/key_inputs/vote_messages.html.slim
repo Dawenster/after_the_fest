@@ -1,0 +1,27 @@
+.admin-container
+  .row
+    .col-md-2
+      = render "admins/admin_nav"
+    .col-md-10
+      #flash
+        - flash.each do |name, msg|
+          = content_tag :div, msg, :id => "flash_#{name}", class: "alert alert-#{name}"
+
+      h2
+        | Edit Vote Messages
+
+      = simple_form_for @key_input, :action => "vote_messages_update", :controller => "key_inputs" do |f|
+        .form-group
+          label for="key_input_up_vote_message"
+            b Up vote message
+          = f.text_field :up_vote_message, :value => @key_input.up_vote_message, :class => "form-control"
+
+        .form-group
+          label for="key_input_down_vote_message"
+            b Down vote message
+          = f.text_field :down_vote_message, :value => @key_input.down_vote_message, :class => "form-control"
+
+        br
+
+        button.btn.btn-success type="submit"
+          | Save

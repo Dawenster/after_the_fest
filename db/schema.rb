@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131203001431) do
+ActiveRecord::Schema.define(version: 20131213223458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,6 +105,8 @@ ActiveRecord::Schema.define(version: 20131203001431) do
     t.text     "terms_and_conditions"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "up_vote_message"
+    t.string   "down_vote_message"
   end
 
   create_table "locations", force: true do |t|

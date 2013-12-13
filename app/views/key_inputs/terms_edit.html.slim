@@ -9,6 +9,7 @@
 
       h2
         | Edit Terms and Conditions
+        
       = simple_form_for @key_input, :action => "terms_update", :controller => "key_inputs" do |f|
         .form-group
           label for="key_input_terms_and_conditions"

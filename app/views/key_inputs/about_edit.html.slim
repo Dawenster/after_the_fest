@@ -9,6 +9,7 @@
 
       h2
         | Edit About Us
+        
       = simple_form_for @key_input, :action => "about_update", :controller => "key_inputs" do |f|
         .form-group
           label for="key_input_about_blurb"

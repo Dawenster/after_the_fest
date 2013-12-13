@@ -23,3 +23,6 @@ ul.nav.nav-pills.nav-stacked
   li class="#{'active' if params[:controller] == 'key_inputs' && params[:action] == 'terms_edit'}"
     a href="#{terms_edit_path}"
       | Terms
+  li class="#{'active' if params[:controller] == 'key_inputs' && params[:action] == 'vote_messages'}"
+    a href="#{vote_messages_edit_path}"
+      | Votes

@@ -7,9 +7,10 @@ class VotesController < ApplicationController
       vote.ip_address = request.location.data["ip"]
       film = Film.find(params[:film_id])
       vote.film_id = film.id
+      message = params[:vote_type] == "up" ? KeyInput.last.up_vote_message : KeyInput.last.down_vote_message
       if unique_ip?(vote) && vote.save
         count = film.increment_vote(params[:vote_type])
-        format.json { render :json => { :message => "Success!", :count => count, :vote_type => params[:vote_type] }, :status => :ok }
+        format.json { render :json => { :message => message, :count => count, :vote_type => params[:vote_type] }, :status => :ok }
       else
         format.json { render :json => { :message => vote.errors.messages }, :status => :unprocessable_entity }
       end
