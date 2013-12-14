@@ -30,7 +30,7 @@
         - @festivals.each do |festival|
           tr
             td
-              = image_tag(festival.logo.url(:thumb))
+              = link_to(image_tag(festival.logo.url(:thumb)), edit_festival_path(festival))
             td
               = link_to(festival.name, edit_festival_path(festival))
             td

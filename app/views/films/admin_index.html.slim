@@ -30,7 +30,7 @@
         - @films.each do |film|
           tr
             td
-              = image_tag(film.image.url(:thumb)) if film.image.present?
+              = link_to(image_tag(film.image.url(:thumb)), edit_film_path(film)) if film.image.present?
             td
               = link_to(film.name, edit_film_path(film))
             td
