@@ -16,6 +16,7 @@ class Film < ActiveRecord::Base
                   :screening, 
                   :start,
                   :end,
+                  :timezone_offset,
                   :genre_ids,
                   :award_ids,
                   :location_ids

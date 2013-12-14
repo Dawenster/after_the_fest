@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131213233308) do
+ActiveRecord::Schema.define(version: 20131214003126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20131213233308) do
     t.datetime "end"
     t.string   "status"
     t.boolean  "show_date"
+    t.integer  "timezone_offset"
   end
 
   create_table "films", force: true do |t|
@@ -81,6 +82,7 @@ ActiveRecord::Schema.define(version: 20131213233308) do
     t.string   "screening"
     t.datetime "start"
     t.datetime "end"
+    t.integer  "timezone_offset"
   end
 
   create_table "films_genres", force: true do |t|

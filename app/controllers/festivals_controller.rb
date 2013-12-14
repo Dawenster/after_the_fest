@@ -65,13 +65,32 @@ class FestivalsController < ApplicationController
   end
 
   def convert_param_dates
-    params[:festival][:start] = convert_to_date_object(params[:festival][:start])
-    params[:festival][:end] = convert_to_date_object(params[:festival][:end])
+    params[:festival][:start] = convert_to_date_object(params[:festival][:start], "start")
+    params[:festival][:end] = convert_to_date_object(params[:festival][:end], "end")
+    set_timezone
+    add_one_day if adjust_day?
     return params
   end
 
-  def convert_to_date_object(str)
+  def convert_to_date_object(str, period)
     Time.zone = cookies["jstz_time_zone"]
-    DateTime.strptime(str, "%m/%d/%Y").end_of_day unless str.blank?
+    if period == "start"
+      return DateTime.strptime(str, "%m/%d/%Y").in_time_zone.beginning_of_day unless str.blank?
+    else
+      return DateTime.strptime(str, "%m/%d/%Y").in_time_zone.end_of_day unless str.blank?
+    end
+  end
+
+  def set_timezone
+    params[:festival][:timezone_offset] = params[:festival][:end].strftime("%z").to_i / 100
+  end
+
+  def adjust_day?
+    params[:festival][:timezone_offset] < 0
+  end
+
+  def add_one_day
+    params[:festival][:start] = params[:festival][:start] + 1.day
+    params[:festival][:end] = params[:festival][:end] + 1.day
   end
 end

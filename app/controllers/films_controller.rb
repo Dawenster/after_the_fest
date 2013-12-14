@@ -75,14 +75,33 @@ class FilmsController < ApplicationController
   private
 
   def convert_param_dates
-    params[:film][:start] = convert_to_date_object(params[:film][:start])
-    params[:film][:end] = convert_to_date_object(params[:film][:end])
+    params[:film][:start] = convert_to_date_object(params[:film][:start], "start")
+    params[:film][:end] = convert_to_date_object(params[:film][:end], "end")
+    set_timezone
+    add_one_day if adjust_day?
     return params
   end
 
-  def convert_to_date_object(str)
+  def convert_to_date_object(str, period)
     Time.zone = cookies["jstz_time_zone"]
-    DateTime.strptime(str, "%m/%d/%Y").end_of_day unless str.blank?
+    if period == "start"
+      return DateTime.strptime(str, "%m/%d/%Y").in_time_zone.beginning_of_day unless str.blank?
+    else
+      return DateTime.strptime(str, "%m/%d/%Y").in_time_zone.end_of_day unless str.blank?
+    end
+  end
+
+  def set_timezone
+    params[:film][:timezone_offset] = params[:film][:end].strftime("%z").to_i / 100
+  end
+
+  def adjust_day?
+    params[:film][:timezone_offset] < 0
+  end
+
+  def add_one_day
+    params[:film][:start] = params[:film][:start] + 1.day
+    params[:film][:end] = params[:film][:end] + 1.day
   end
 
   def geoblock?(film)

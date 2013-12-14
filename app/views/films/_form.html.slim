@@ -65,7 +65,7 @@
         label for="film_start" style="margin-left: 10px; margin-top: 7px;"
           b Start date (mm/dd/yyyy) for the film on ATF (inclusive)
         .col-md-2 style="padding: 0 !important;"
-          = f.text_field :start, :value => "#{@film.start.strftime("%m/%d/%Y") if @film.start}", :class => "form-control", :placeholder => "Click to select"
+          = f.text_field :start, :value => "#{(@film.start + @film.timezone_offset.hours).strftime("%m/%d/%Y") if @film.start}", :class => "form-control", :placeholder => "Click to select"
 
   .row
     .col-md-12
@@ -73,7 +73,7 @@
         label for="film_end" style="margin-left: 10px; margin-top: 7px;"
           b End date (mm/dd/yyyy) for the film on ATF (inclusive)
         .col-md-2 style="padding: 0 !important;"
-          = f.text_field :end, :value => "#{@film.end.strftime("%m/%d/%Y") if @film.end}", :class => "form-control", :placeholder => "Click to select"
+          = f.text_field :end, :value => "#{(@film.end + @film.timezone_offset.hours).strftime("%m/%d/%Y") if @film.end}", :class => "form-control", :placeholder => "Click to select"
 
   .form-group
     = f.association :locations, :as => :check_boxes, :label => "Locations that can watch this film"
