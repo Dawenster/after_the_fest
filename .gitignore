@@ -19,3 +19,6 @@ config/initializers/aaa_secret_stuff.rb
 
 # Uploaded local festival files
 /public/system/festivals
+*.dump
+
+latest.dump

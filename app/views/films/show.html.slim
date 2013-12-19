@@ -46,6 +46,9 @@ css:
         .detail-content
           h3
             = @film.name
+          - if @film.official_url
+            p
+              = "Official website: #{link_to(@film.official_url, @film.official_url, :target => '_blank')}".html_safe
           p
             = @genres.join(", ").html_safe
           p

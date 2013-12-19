@@ -17,6 +17,7 @@ class Film < ActiveRecord::Base
                   :start,
                   :end,
                   :timezone_offset,
+                  :official_url,
                   :genre_ids,
                   :award_ids,
                   :location_ids

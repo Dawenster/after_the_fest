@@ -5,6 +5,11 @@
     = f.text_field :name, :value => @film.name, :class => "form-control"
 
   .form-group
+    label for="film_official_url"
+      b Film's website url --> make sure to have the http:// (e.g. http://movies.disney.com/up)
+    = f.text_field :official_url, :value => @film.official_url, :class => "form-control"
+
+  .form-group
     label for="film_image"
       b Image
     - if @film.image.present?
