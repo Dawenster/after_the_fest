@@ -4,7 +4,12 @@ class FilmsController < ApplicationController
 
   def searchable_films
     respond_to do |format|
-      format.json { render :json => { :films => Film.all_films } }
+      if params[:festival_slug].present?
+        films = Festival.find_by_slug(params[:festival_slug]).films
+        format.json { render :json => { :films => Film.format_films_for_search(films) } }
+      else
+        format.json { render :json => { :films => Film.format_films_for_search(Film.all) } }
+      end
     end
   end
 

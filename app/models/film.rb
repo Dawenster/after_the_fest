@@ -44,10 +44,10 @@ class Film < ActiveRecord::Base
   has_and_belongs_to_many :awards
   has_and_belongs_to_many :locations
 
-  def self.all_films
-    films = []
-    Film.all.each_with_index do |film, i|
-      films << {
+  def self.format_films_for_search(films)
+    formatted_films = []
+    films.each_with_index do |film, i|
+      formatted_films << {
         "value" => film.name.truncate(30),
         "link" => "/#{film.festival.slug}/#{film.slug}",
         "festival" => film.festival.name.truncate(38),
@@ -55,7 +55,7 @@ class Film < ActiveRecord::Base
         "styleId" => "search-item-#{i + 1}"
       }
     end
-    return films
+    return formatted_films
   end
 
   def create_slug

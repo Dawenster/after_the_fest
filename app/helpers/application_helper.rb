@@ -6,4 +6,11 @@ module ApplicationHelper
     str.gsub!("content=\"440\"", "content=\"100%\"")
     return str
   end
+
+  def page_is_festival_specific?
+    (params[:controller] == "festivals" && params[:action] == "show") || 
+    (params[:controller] == "genres" && params[:action] == "show") || 
+    (params[:controller] == "films" && params[:action] == "show") || 
+    (params[:controller] == "awards" && params[:action] == "index")
+  end
 end

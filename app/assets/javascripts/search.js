@@ -1,9 +1,11 @@
 $(document).ready(function() {
   var allFilms = null;
+  var festivalPage = $(".festival-banner").attr("data-festival-slug");
   $.ajax({
     url: "/searchable_films",
     method: "get",
-    dataType: "json"
+    dataType: "json",
+    data: { festival_slug: festivalPage }
   })
   .done(function(data) {
     allFilms = data.films;
