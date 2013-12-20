@@ -1,12 +1,6 @@
 $(document).ready(function() {
   var timeZone = jstz.determine();
   document.cookie = 'jstz_time_zone='+timeZone.name()+';';
-  
-  $(".festival-banner").click(function(e) {
-    e.preventDefault();
-    var win = window.open($(this).attr("data-url"), '_blank');
-    win.focus();
-  });
 
   var gridItems = $(".film-grid-item");
   var positionIfLast = null;

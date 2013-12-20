@@ -19,11 +19,19 @@
 
   .form-group
     label for="festival_banner"
-      b Banner
+      b Banner --> ensure a 8:1 width:height ratio (for desktop and large tablets)
     - if @festival.banner.present?
       div style="margin-bottom: 20px;"
         = image_tag(@festival.banner.url(:thumb))
     = f.file_field :banner, :class => "form-control"
+
+  .form-group
+    label for="festival_mobile_banner"
+      b Mobile banner --> ensure a 4:1 width:height ratio (for mobile and small tablets)
+    - if @festival.mobile_banner.present?
+      div style="margin-bottom: 20px;"
+        = image_tag(@festival.mobile_banner.url(:thumb))
+    = f.file_field :mobile_banner, :class => "form-control"
 
   .form-group
     label for="festival_festival_url"

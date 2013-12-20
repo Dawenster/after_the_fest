@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131219231055) do
+ActiveRecord::Schema.define(version: 20131219235243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,10 @@ ActiveRecord::Schema.define(version: 20131219231055) do
     t.string   "status"
     t.boolean  "show_date"
     t.integer  "timezone_offset"
+    t.string   "mobile_banner_file_name"
+    t.string   "mobile_banner_content_type"
+    t.integer  "mobile_banner_file_size"
+    t.datetime "mobile_banner_updated_at"
   end
 
   create_table "films", force: true do |t|

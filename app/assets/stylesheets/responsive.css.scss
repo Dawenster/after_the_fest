@@ -1,3 +1,27 @@
+/* Bottom third of the small screens only */
+
+@media (max-width: 468px) {
+  .header-holder {
+    height: 130px;
+  }
+}
+
+/* Middle third of the small screens only */
+
+@media (min-width: 468px) and (max-width: 618px) {
+  .header-holder {
+    height: 180px;
+  }
+}
+
+/* Top third of the small screens only */
+
+@media (min-width: 618px) and (max-width: 768px) {
+  .header-holder {
+    height: 200px;
+  }
+}
+
 /* Extra small screens only */
 
 @media (max-width: 768px) {
@@ -12,6 +36,10 @@
   #search-bar {
     float: left;
     width: 85%;
+  }
+
+  .banner-holder {
+    padding: 0px !important;
   }
 
   .video-holder {
@@ -70,6 +98,10 @@
     display: inline !important;
   }
 
+  .header-holder {
+    height: 90px;
+  }
+
   .video-holder {
     height: 440px !important;
   }
@@ -104,6 +136,10 @@
 /* Medium screens only */
 
 @media (min-width: 992px) and (max-width: 1200px) {
+  .header-holder {
+    height: 120px;
+  }
+
   .voting-section {
     font-size: 10px;
   }
@@ -117,6 +153,10 @@
 /* Large screens only */
 
 @media (min-width: 1200px) {
+  .header-holder {
+    height: 150px;
+  }
+
   .voting-section {
     font-size: 12px;
   }

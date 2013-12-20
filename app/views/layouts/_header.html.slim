@@ -1,3 +1,6 @@
-.row style="height: 150px; padding: 10px 0px !important;"
-  .col-md-12.col-sm-12 style="height: 100%;"
-    .festival-banner style="background-image:url(#{@festival.banner.url}); width: 100%; height: 100%;" data-url="#{@festival.festival_url}" data-festival-slug="#{@festival.slug}"
+.header-holder.row style=""
+  .banner-holder.col-md-12.col-sm-12 style="height: 100%;"
+    .festival-banner.hidden-xs data-festival-slug="#{@festival.slug}"
+      = link_to(image_tag(@festival.banner.url(:display), :width => "100%"), @festival.festival_url, :target => "_blank")
+    .festival-banner.visible-xs data-festival-slug="#{@festival.slug}"
+      = link_to(image_tag(@festival.mobile_banner.url(:display), :width => "100%"), @festival.festival_url, :target => "_blank")

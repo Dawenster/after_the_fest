@@ -1,5 +1,5 @@
 class Festival < ActiveRecord::Base
-  attr_accessible :name, :festival_url, :logo, :banner, :background_colour, :slug, :start, :end, :status, :show_date, :timezone_offset
+  attr_accessible :name, :festival_url, :logo, :banner, :mobile_banner, :background_colour, :slug, :start, :end, :status, :show_date, :timezone_offset
 
   s3_credentials_hash = {
     :access_key_id => ENV['AWS_ACCESS_KEY'],
@@ -12,7 +12,12 @@ class Festival < ActiveRecord::Base
                     :bucket => "afterthefest"
 
   has_attached_file :banner,
-                    :styles => { :thumb => "300x150>" },
+                    :styles => { :thumb => "240x30#", :display => "1120x140#" },
+                    :s3_credentials => s3_credentials_hash,
+                    :bucket => "afterthefest"
+
+  has_attached_file :mobile_banner,
+                    :styles => { :thumb => "120x30#", :display => "480x120#" },
                     :s3_credentials => s3_credentials_hash,
                     :bucket => "afterthefest"
 
