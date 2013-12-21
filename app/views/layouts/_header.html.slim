@@ -1,4 +1,4 @@
-.header-holder.row style=""
+.header-holder.row
   .banner-holder.col-md-12.col-sm-12 style="height: 100%;"
     .festival-banner.hidden-xs data-festival-slug="#{@festival.slug}"
       = link_to(image_tag(@festival.banner.url(:display), :width => "100%"), @festival.festival_url, :target => "_blank")
