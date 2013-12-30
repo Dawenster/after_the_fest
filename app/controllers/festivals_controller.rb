@@ -22,7 +22,7 @@ class FestivalsController < ApplicationController
 
   def create
     params = convert_param_boolean
-    params = convert_param_dates
+    params = convert_param_dates if both_dates_entered?
     @festival = Festival.new(params[:festival])
     if @festival.save
       flash[:success] = "#{@festival.name} has been successfully created."
@@ -40,7 +40,7 @@ class FestivalsController < ApplicationController
   def update
     @festival = Festival.find(params[:id])
     params = convert_param_boolean
-    params = convert_param_dates
+    params = convert_param_dates if both_dates_entered?
     @festival.assign_attributes(params[:festival])
     if @festival.save
       flash[:success] = "#{@festival.name} has been successfully updated."
@@ -58,6 +58,10 @@ class FestivalsController < ApplicationController
   end
 
   private
+
+  def both_dates_entered?
+    !params[:festival][:start].blank? && !params[:festival][:end].blank?
+  end
 
   def convert_param_boolean
     params[:festival][:show_date] = params[:festival][:show_date] == "true" ? true : false
