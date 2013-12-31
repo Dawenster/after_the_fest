@@ -38,8 +38,8 @@ class Film < ActiveRecord::Base
   before_save :create_slug
 
   belongs_to :festival
-  has_many :votes
-  has_many :comments
+  has_many :votes, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :awards
   has_and_belongs_to_many :locations
@@ -75,7 +75,9 @@ class Film < ActiveRecord::Base
   end
 
   def available_range
-    "#{self.start.strftime('%b')} #{self.start.day.ordinalize} to #{self.end.strftime('%b')} #{self.end.day.ordinalize}"
+    str = "From #{self.start.strftime('%b')} #{self.start.day.ordinalize}" if self.start
+    str += "#{self.start ? ' until' : 'Until'} #{self.end.strftime('%b')} #{self.end.day.ordinalize}" if self.end
+    return str
   end
 
   def increment_vote(vote_type)
@@ -89,6 +91,8 @@ class Film < ActiveRecord::Base
   end
 
   def available?
-    Time.now >= self.start && Time.now <= self.end
+    start_time = self.start ? self.start : Time.now - 1
+    end_time = self.end ? self.end : Time.now + 1
+    Time.now >= start_time && Time.now <= end_time
   end
 end
