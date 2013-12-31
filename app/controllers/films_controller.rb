@@ -43,7 +43,7 @@ class FilmsController < ApplicationController
   end
 
   def create
-    params = convert_param_dates
+    params = convert_param_dates if both_dates_entered?
     @film = Film.new(params[:film])
     if @film.save
       flash[:success] = "#{@film.name} has been successfully created."
@@ -60,7 +60,7 @@ class FilmsController < ApplicationController
 
   def update
     @film = Film.find(params[:id])
-    params = convert_param_dates
+    params = convert_param_dates if both_dates_entered?
     @film.assign_attributes(params[:film])
     if @film.save
       flash[:success] = "#{@film.name} has been successfully updated."
@@ -78,6 +78,10 @@ class FilmsController < ApplicationController
   end
 
   private
+
+  def both_dates_entered?
+    !params[:film][:start].blank? && !params[:film][:end].blank?
+  end
 
   def convert_param_dates
     params[:film][:start] = convert_to_date_object(params[:film][:start], "start")
