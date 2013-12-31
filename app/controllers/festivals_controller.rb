@@ -21,8 +21,8 @@ class FestivalsController < ApplicationController
   end
 
   def create
-    params = convert_param_boolean
-    params = convert_param_dates if both_dates_entered?
+    convert_param_boolean
+    convert_param_dates if both_dates_entered?
     @festival = Festival.new(params[:festival])
     if @festival.save
       flash[:success] = "#{@festival.name} has been successfully created."
@@ -39,8 +39,8 @@ class FestivalsController < ApplicationController
 
   def update
     @festival = Festival.find(params[:id])
-    params = convert_param_boolean
-    params = convert_param_dates if both_dates_entered?
+    convert_param_boolean
+    convert_param_dates if both_dates_entered?
     @festival.assign_attributes(params[:festival])
     if @festival.save
       flash[:success] = "#{@festival.name} has been successfully updated."
@@ -60,20 +60,18 @@ class FestivalsController < ApplicationController
   private
 
   def both_dates_entered?
-    !params[:festival][:start].blank? && !params[:festival][:end].blank?
+    !params[:festival][:start].blank? || !params[:festival][:end].blank?
   end
 
   def convert_param_boolean
     params[:festival][:show_date] = params[:festival][:show_date] == "true" ? true : false
-    return params
   end
 
   def convert_param_dates
-    params[:festival][:start] = convert_to_date_object(params[:festival][:start], "start")
-    params[:festival][:end] = convert_to_date_object(params[:festival][:end], "end")
+    params[:festival][:start] = convert_to_date_object(params[:festival][:start], "start") unless params[:festival][:start].blank?
+    params[:festival][:end] = convert_to_date_object(params[:festival][:end], "end") unless params[:festival][:end].blank?
     set_timezone
     add_one_day if adjust_day?
-    return params
   end
 
   def convert_to_date_object(str, period)
@@ -86,7 +84,11 @@ class FestivalsController < ApplicationController
   end
 
   def set_timezone
-    params[:festival][:timezone_offset] = params[:festival][:end].strftime("%z").to_i / 100
+    if !params[:festival][:start].blank?
+      params[:festival][:timezone_offset] = params[:festival][:start].strftime("%z").to_i / 100
+    else
+      params[:festival][:timezone_offset] = params[:festival][:end].strftime("%z").to_i / 100
+    end
   end
 
   def adjust_day?
@@ -94,7 +96,7 @@ class FestivalsController < ApplicationController
   end
 
   def add_one_day
-    params[:festival][:start] = params[:festival][:start] + 1.day
-    params[:festival][:end] = params[:festival][:end] + 1.day
+    params[:festival][:start] = params[:festival][:start] + 1.day unless params[:festival][:start].blank?
+    params[:festival][:end] = params[:festival][:end] + 1.day unless params[:festival][:end].blank?
   end
 end

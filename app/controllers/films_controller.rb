@@ -43,7 +43,7 @@ class FilmsController < ApplicationController
   end
 
   def create
-    params = convert_param_dates if both_dates_entered?
+    convert_param_dates if both_dates_entered?
     @film = Film.new(params[:film])
     if @film.save
       flash[:success] = "#{@film.name} has been successfully created."
@@ -60,7 +60,7 @@ class FilmsController < ApplicationController
 
   def update
     @film = Film.find(params[:id])
-    params = convert_param_dates if both_dates_entered?
+    convert_param_dates if both_dates_entered?
     @film.assign_attributes(params[:film])
     if @film.save
       flash[:success] = "#{@film.name} has been successfully updated."
@@ -80,15 +80,14 @@ class FilmsController < ApplicationController
   private
 
   def both_dates_entered?
-    !params[:film][:start].blank? && !params[:film][:end].blank?
+    !params[:film][:start].blank? || !params[:film][:end].blank?
   end
 
   def convert_param_dates
-    params[:film][:start] = convert_to_date_object(params[:film][:start], "start")
-    params[:film][:end] = convert_to_date_object(params[:film][:end], "end")
+    params[:film][:start] = convert_to_date_object(params[:film][:start], "start") unless params[:film][:start].blank?
+    params[:film][:end] = convert_to_date_object(params[:film][:end], "end") unless params[:film][:end].blank?
     set_timezone
     add_one_day if adjust_day?
-    return params
   end
 
   def convert_to_date_object(str, period)
@@ -101,7 +100,11 @@ class FilmsController < ApplicationController
   end
 
   def set_timezone
-    params[:film][:timezone_offset] = params[:film][:end].strftime("%z").to_i / 100
+    if !params[:film][:start].blank?
+      params[:film][:timezone_offset] = params[:film][:start].strftime("%z").to_i / 100
+    else
+      params[:film][:timezone_offset] = params[:film][:end].strftime("%z").to_i / 100
+    end
   end
 
   def adjust_day?
@@ -109,8 +112,8 @@ class FilmsController < ApplicationController
   end
 
   def add_one_day
-    params[:film][:start] = params[:film][:start] + 1.day
-    params[:film][:end] = params[:film][:end] + 1.day
+    params[:film][:start] = params[:film][:start] + 1.day unless params[:film][:start].blank?
+    params[:film][:end] = params[:film][:end] + 1.day unless params[:film][:end].blank?
   end
 
   def geoblock?(film)
