@@ -53,7 +53,7 @@ html,body {
 }
 
 #main-navbar-collapse {
-  padding-top: 30px;
+  padding-top: 25px;
 }
 
 .navbar {
@@ -80,11 +80,10 @@ html,body {
   li a {
     color: white !important;
   }
-  .dropdown-menu {
-    li a {
-      color: black !important;
-    }
-  }
+}
+
+.navbar-collapse, .navbar-form {
+  border-color: #663E4D !important;
 }
 
 .navbar-toggle {
