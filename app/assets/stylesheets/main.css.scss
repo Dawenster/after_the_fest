@@ -1,10 +1,10 @@
 html,body {
   height: 100%;
-  background-color: #CCCCCC !important;
 }
 
 #wrap {
   min-height: 100%;
+  background-color: #CCCCCC !important;
 }
 
 .container {
@@ -46,6 +46,14 @@ html,body {
   margin-bottom: 20px;
   background-color: white;
   border: 1px black solid;
+}
+
+.index-festival-logo-double {
+  background-color: white;
+  border: 1px black solid;
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
 }
 
 .festival-date {
