@@ -58,6 +58,33 @@ html,body {
 
 .navbar {
   border-radius: 0px !important;
+  background-color: #663E4D !important;
+  .dropdown {
+    a.dropdown-toggle {
+      color: white !important;
+      .caret {
+        border-top-color: white !important;
+        border-bottom-color: white !important;
+      }
+    }
+  }
+  .dropdown.open {
+    a.dropdown-toggle {
+      color: black !important;
+      .caret {
+        border-top-color: black !important;
+        border-bottom-color: black !important;
+      }
+    }
+  }
+  li a {
+    color: white !important;
+  }
+  .dropdown-menu {
+    li a {
+      color: black !important;
+    }
+  }
 }
 
 .navbar-toggle {
