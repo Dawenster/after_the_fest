@@ -9,7 +9,7 @@ html,body {
 .container {
   padding-top: 111px;
   height: 100%;
-  padding-bottom: 100px;
+  padding-bottom: 50px;
   overflow: auto;
 }
 
@@ -209,10 +209,20 @@ html,body {
 
 .footer {
   position: relative;
-  height: 100px;
-  margin-top: -100px;
+  height: 50px;
+  margin-top: -50px;
   clear: both;
-  padding: 20px;
-  background-color: #F8F8F8;
+  padding-top: 13px;
+  padding-left: 25px;
+  padding-right: 25px;
+  background-color: #663E4D;
   border-top: 1px solid #E7E7E7;
+  color: white;
+  a {
+    color: white;
+    &:hover {
+      color: lightgrey;
+      text-decoration: none;
+    }
+  }
 }

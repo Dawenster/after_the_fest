@@ -25,6 +25,10 @@
 /* Extra small screens only */
 
 @media (max-width: 768px) {
+  .container {
+    padding-bottom: 70px;
+  }
+
   .landing-page-subtitle {
     text-align: left;
   }
@@ -70,7 +74,8 @@
   }
 
   .footer {
-    line-height: none !important;
+    height: 70px;
+    margin-top: -70px;
   }
 }
 
@@ -82,7 +87,7 @@
       color: black !important;
     }
   }
-  
+
   .landing-page-subtitle {
     text-align: center;
   }
@@ -133,10 +138,6 @@
 
   .popover {
     margin-top: 75px;
-  }
-
-  .footer {
-    line-height: 60px;
   }
 }
 
@@ -251,9 +252,5 @@
 
   .popover {
     margin-top: 75px;
-  }
-
-  .footer {
-    line-height: 60px;
   }
 }
