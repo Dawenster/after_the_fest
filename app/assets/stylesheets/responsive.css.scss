@@ -77,6 +77,12 @@
 /* Small screens only */
 
 @media (min-width: 768px) and (max-width: 992px) {
+  .dropdown-menu {
+    li a {
+      color: black !important;
+    }
+  }
+  
   .landing-page-subtitle {
     text-align: center;
   }
@@ -194,6 +200,12 @@
 /* Medium and large screens */
 
 @media (min-width: 992px) {
+  .dropdown-menu {
+    li a {
+      color: black !important;
+    }
+  }
+
   .festival-date {
     font-size: 18px;
     height: 30px;
