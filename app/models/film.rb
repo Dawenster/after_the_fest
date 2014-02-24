@@ -48,7 +48,7 @@ class Film < ActiveRecord::Base
     formatted_films = []
     films.each_with_index do |film, i|
       formatted_films << {
-        "value" => film.name.truncate(30),
+        "value" => film.name.truncate(28),
         "link" => "/#{film.festival.slug}/#{film.slug}",
         "festival" => film.festival.name.truncate(38),
         "icon" => film.image.url(:thumb),
