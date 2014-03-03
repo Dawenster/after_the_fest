@@ -1,6 +1,7 @@
 .voting-bucket
   .col-xs-5.col-sm-3.col-md-3.voting-space style="font-weight: bold;"
-    - if @film.votes.map{ |vote| vote.ip_address }.include?(request.location.data["ip"])
+    - location = request.location
+    - if location && @film.votes.map{ |vote| vote.ip_address }.include?(location.data["ip"])
       | Thank you for voting
     - else
       span
