@@ -34,6 +34,10 @@ AfterTheFest::Application.routes.draw do
     get "/blocked_images" => "key_inputs#blocked_images", :as => :blocked_images_edit
   end
 
+  scope "/submit" do
+    get "/pov" => "submissions#pov", :as => :submit_pov
+  end
+
   resources :votes, :only => [:create]
   
   resources :comments, :only => [:create]
