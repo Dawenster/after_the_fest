@@ -1,7 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>After The Fest | Watch Independent Films Even After the Festival is Over</title>
+  <% 
+    title = "After The Fest | The Show Must Go On"
+    description = "After The Fest allows independent film lovers to watch films from film festivals, even after the festival has ended."
+  %>
+
+  <% meta :title => title, :description => description, :keywords => %w(after the fest afterthefest independent film movie festival) %>
+
+  <% 
+    meta [:property => "og:url", :content => "http://www.afterthefest.com/"]
+    meta [:property => "og:title", :content => title]
+    meta [:property => "og:description", :content => description]
+    meta [:property => "og:image", :content => "https://s3-us-west-2.amazonaws.com/afterthefest/atf-color_on_black_bg_02.jpg"]
+    meta [:property => "og:type", :content => "website"]
+  %>
+
+  <%= metamagic %>
+
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
