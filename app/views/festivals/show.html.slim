@@ -1,4 +1,4 @@
-- generate_meta_tags("#{@festival.name} | After The Fest", "Watch films from #{@festival.name}", @festival.logo.url(:display))
+- generate_meta_tags("#{@festival.name} | After The Fest", "Watch films from #{@festival.name}", "https://s3-us-west-2.amazonaws.com/afterthefest/atf-color_on_black_bg_02.jpg")
 css:
   #wrap {
     background-color: #{@festival.background_colour} !important;
@@ -11,7 +11,7 @@ css:
     b style="font-size: 16px; position: absolute; left: -50px; top: -14px;"
       | Share
   span.st_facebook_large displayText="Facebook"
-  span.st_twitter_large displayText="Tweet" st_via="" st_msg="Watch independent films from #{@festival.name} via @AfterTheFest" st_title="#indiefilms" st_url=""
+  span.st_twitter_large displayText="Tweet" st_via="" st_msg="Watch great films from #{@festival.name} via @AfterTheFest" st_title="#indiefilms" st_url=""
   / span.st_googleplus_large displayText="Google +"
   span.st_pinterest_large displayText="Pinterest"
   span.st_email_large displayText="Email"
