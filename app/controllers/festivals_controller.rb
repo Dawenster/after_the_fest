@@ -2,10 +2,11 @@ class FestivalsController < ApplicationController
   http_basic_authenticate_with :name => ENV['ADMIN_NAME'], :password => ENV['ADMIN_PASSWORD'], :except => [:index, :show]
 
   def index
-    @now_playing = Festival.where(:status => "Now Playing").order("lower(name) ASC").limit(3)
-    @coming_soon = Festival.where(:status => "Coming Soon").order("lower(name) ASC").limit(6)
-    @recently_viewed = Festival.where(:status => "Recently Viewed").order("lower(name) ASC").limit(6)
-    @key_input = KeyInput.last
+    # @now_playing = Festival.where(:status => "Now Playing").order("lower(name) ASC").limit(3)
+    # @coming_soon = Festival.where(:status => "Coming Soon").order("lower(name) ASC").limit(6)
+    # @recently_viewed = Festival.where(:status => "Recently Viewed").order("lower(name) ASC").limit(6)
+    # @key_input = KeyInput.last
+    redirect_to "/demo"
   end
 
   def show
